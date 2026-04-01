@@ -6,13 +6,14 @@
   },
   "scripts": {
     "setup": "./scripts/setup.sh",
-    "dev": "concurrently -k -n backend,frontend -c red,blue \"./scripts/dev-backend.sh\" \"npm --prefix frontend run dev\"",
+    "audit": "bash ./scripts/audit.sh",
+    "dev": "concurrently -k -n backend,frontend -c red,blue \"./scripts/dev.sh\" \"npm --prefix frontend run dev\"",
     "stop": "./scripts/stop.sh",
     "dev:frontend": "npm --prefix frontend run dev",
     "build:frontend": "npm --prefix frontend run build",
     "test:frontend": "npm --prefix frontend run test",
-    "dev:backend": "./scripts/dev-backend.sh",
-    "test:backend": "./scripts/test-backend.sh",
+    "dev:backend": "./scripts/dev.sh",
+    "test:backend": "./scripts/test.sh",
     "lint:frontend": "npm --prefix frontend run lint"
   }
 }

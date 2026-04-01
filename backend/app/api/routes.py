@@ -3,7 +3,7 @@ from fastapi.responses import Response
 
 from app.core.config import Settings, get_settings
 from app.models.domain import AuditRequest, AuditStartResponse, AuditStatusResponse, HealthResponse
-from app.services.jobs import JobManager
+from app.services.audit_job_service import JobManager
 
 
 router = APIRouter()

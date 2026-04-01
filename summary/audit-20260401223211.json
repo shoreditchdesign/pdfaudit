@@ -1,0 +1,21 @@
+{
+  "job_id": "932a471674ad49fbaa38b307fd900923",
+  "timestamp": "20260401223211",
+  "report_path": "reports/audit-20260401223211.xlsx",
+  "source_count": 1,
+  "summary": {
+    "records": 1,
+    "pdf_ua": {
+      "FAIL": 1
+    },
+    "wcag": {
+      "NEEDS_MANUAL_REVIEW": 1
+    },
+    "retrieval": {
+      "DIRECT_FILE_OK": 1
+    },
+    "adobe": {
+      "Complete": 1
+    }
+  }
+}
