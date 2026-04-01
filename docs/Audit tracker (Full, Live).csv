@@ -1,0 +1,543 @@
+PDF Name,URL,Category,Total Traffic,Priority Tier,Axes Audit Status,Date Audited,PDF/ UA Reults,WCAG Reults,Link to Audit report,PDF/UA Notes,WCAG Notes,Remediation Status,Adobe Acrobat Audit Status,Remediation Notes,Re-test Result,Link to Audit report,3rd Re-test Result,Link to Audit report
+Mandate For General Organisations,Open PDF,Forms,"22,503",Tier 1,Complete,23/03/2026,Pass,Pass,https://check.axes4.com/en/result/fb026c2f-d052-4e2f-b111-427dacd55e87,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Complete,Complete,All cheks passed ,,,,
+Business Price List,Open PDF,Regulations,"20,720",Tier 1,Complete,24/03/2026,Pass,Fail,https://check.axes4.com/en/result/6bbb5e63-b1f2-4268-b63b-117e2bc57407,,"There are 37 places in the document where the colour of the text isn't different enough from the colour behind it, making it harder to read.",Not Started,Not Started,,,,,
+Hsbcuk Account Closure Form,Open PDF,General,"11,416",Tier 1,Complete,25/03/2026,Pass,Pass,https://check.axes4.com/en/result/439d0330-06a0-4644-8ae9-f0214d8088ca,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Change Of Address Form,Open PDF,Solutions,"3,634",Tier 1,Complete,25/03/2026,Fail,Fail,https://check.axes4.com/en/result/69d49c9e-3c20-4c9c-a485-6d1e0810af2b,"The PDF's document properties don't have a proper title set, or the PDF is configured to show the filename in the title bar instead of a meaningful title. ","the document is missing bookmarks. If the PDF is longer than a few pages and has no bookmark panel, that's a failure, users (including screen reader users) have no way to jump between sections.",Not Started,Not Started,,,,,
+Business Banking Terms And Conditions,Open PDF,Regulations,"3,051",Tier 1,Complete,24/03/2026,Fail,Fail,https://check.axes4.com/en/result/1e01e647-ff46-4520-954f-d1305ac9a281,there's at least one element in the PDF that's using an incorrect or invalid tag type.,"WCAG Failures,1.3 Adaptable 2 failures, there are two places where the visual structure of the document isn't reflected in the tags. 1.4 Distinguishable, 5  instances of text that doesn't meet the 4.5:1 (normal text) or 3:1 (large text) contrast ratio. 4.1 Compatible The 6 warnings likely mean there are interactive elements (links, form fields, or buttons) where the accessible name or role isn't quite right but isn't definitively broken",Not Started,Not Started,,,,,
+Invoice Discounting Smart Form,Open PDF,GIB/RF/IIF,"2,877",Tier 1,Complete,24/03/2026,Fail,Fail,https://check.axes4.com/en/result/101ad5eb-3b5b-4a0e-8a3a-b23643600f64,"Basic reuriments 
+Fonts, 1 failure
+Natural language, 14
+
+Metadata and Settings
+Metadata, 2 failures
+Document settings, 2 failures","1 Perceivable
+1.3 Adaptable, 1 Failures
+
+2 Operable
+2.4 Navigable, 2 Failures
+
+3 Understandable
+3.1 Readable, 14 Failures",Not Started,Not Started,,,,,
+Business Deposit Card Application Form,Open PDF,Solutions,"2,546",Tier 1,Complete,24/03/2026,Fail,Fail,,"Basic Requirements
+Content, 446 failures","1 Perceivable
+1.3 Adaptable, 446 Failures",Not Started,Not Started,,,,,
+Managing Service Guide,Open PDF,Campaigns,"2,260",Tier 1,Blocked,24/03/2026,,,404,404,404,N/A,Blocked,404,,,,
+Mandate Continuation Sheet For Additional Signatories,Open PDF,Forms,"1,396",Tier 1,Complete,24/03/2026,Pass,Pass,https://check.axes4.com/en/result/e740eb71-7756-4467-9d2d-8ca5ccebb5ff,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+State Recon Temp,Open PDF,GIB/RF/IIF,"1,360",Tier 1,Blocked,24/03/2026,,,Needs manual review,Xlsx FIle Needs manual review ,Xlsx FIle Needs manual review ,Not Started,Not Started,,,,,
+Mandate For General Partnerships And Limited Partnerships,Open PDF,Forms,"1,352",Tier 1,Complete,24/03/2026,Pass,Pass,https://check.axes4.com/en/result/5a7f5f5a-2881-4744-8972-e1c4178b2636,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Standard Price List Effective From 3 June 2024,Open PDF,General,"1,245",Tier 1,Complete,24/03/2026,Fail,Fail,https://check.axes4.com/en/result/62c4575a-b2da-4705-a733-2f6eb629dc5a,"3 fonts not embedded
+20,426 content items not tagged
+1 structure tree warning
+1 metadata field missing
+","20,429 content items not properly tagged (1.3 Adaptable)
+1 navigation failure — missing bookmarks or document title (2.4 Navigable)
+1 compatibility warning — link or form field naming issue (4.1 Compatible)",Not Started,Not Started,,,,,
+Business Banking Price List,Open PDF,General,"1,196",Tier 1,Complete,24/03/2026,Pass,Fail,https://check.axes4.com/en/result/b04fcd18-a2d2-4432-bec4-098e9fdf2b55,The file meets all machine-verifiable PDF/UA requirements.,37 colour contrast failures (1.4 Distinguishable),Not Started,Not Started,,,,,
+Mandate Continuation Sheet For Additional Accounts,Open PDF,Forms,"1,130",Tier 1,Complete,24/03/2026,Pass,Pass,https://check.axes4.com/en/result/48c504f0-b888-44e7-8bdd-86d6b5bed06c,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Signatories Of A Corporate Partner Trustee Executor Administrator Signatory,Open PDF,Forms,"1,079",Tier 1,Complete,24/03/2026,Pass,Pass,https://check.axes4.com/en/result/04b346d5-17aa-4bd3-93a6-2442c8b42b32,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Mandate Continuation Sheet For Specific Signing Rules,Open PDF,Forms,889,Tier 1,Complete,24/03/2026,Pass,Pass,https://check.axes4.com/en/result/0407c24e-1e2f-443b-b366-bce84c05dbf6,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Presentation Export Doc Cover,Open PDF,Solutions,878,Tier 1,Blocked,24/03/2026,Fail,Fail,https://check.axes4.com/en/result/d9e253f5-f69e-445a-ad33-b6c39a37c07f,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Hsbc Global Wallet Factsheet June 2024,Open PDF,Products,835,Tier 1,Blocked,24/03/2026,Fail,Fail,https://check.axes4.com/en/result/c455a58c-cca6-4a5a-95c8-06ea4d5d8be0,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Mandate For Trustees Or For Executors And Administrators Of A Deceased Persons Estate,Open PDF,Forms,833,Tier 1,Complete,24/03/2026,Partial,Partial,https://check.axes4.com/en/result/f52d18f3-2601-411a-8526-180a0f5b23a4,"Structure Tree, 24 errors","4.1 Compatible, 24 errors",Not Started,Not Started,,,,,
+Go Greener Sme Reward,Open PDF,Products,718,Tier 1,Blocked,24/03/2026,Fail,Fail,https://check.axes4.com/en/result/a5483ff8-0aa6-4502-b19f-dc7288779174,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Faster Payments Factsheet For Commercial Banking,Open PDF,Products,680,Tier 1,Complete,24/03/2026,Fail,Fail,https://check.axes4.com/en/result/a7a09981-342d-4d5b-b0d6-d38a8e34ef51,"10 content items not properly tagged
+8 structure elements using incorrect tag types
+8 alternative description warnings (alt text may be missing or questionable)","8 alt text warnings (1.1 Text Alternatives)
+10 structure/tagging failures (1.3 Adaptable)
+8 compatibility failures — links or form fields with incorrect names/roles (4.1 Compatible)",Not Started,Not Started,,,,,
+Global Funds Transfer,Open PDF,Solutions,650,Tier 1,Complete,24/03/2026,Fail,Fail,https://check.axes4.com/en/result/4b89acef-2844-4142-ab4c-5dc6a9df50b2,"1 font not embedded
+7 natural language failures (document or content language not set)
+1 metadata field missing
+2 document settings failures","1 structure/tagging failure (1.3 Adaptable)
+2 navigation failures — missing bookmarks or document title (2.4 Navigable)
+7 language failures — document or content language not set (3.1 Readable)",Not Started,Not Started,,,,,
+Privacy Notice For Uk Customers,Open PDF,General,648,Tier 1,Complete,24/03/2026,Pass,Fail,https://check.axes4.com/en/result/b6f7b558-c675-4c70-aac2-f72ae9b9cc66,The file meets all machine-verifiable PDF/UA requirements.,134 colour contrast failures (1.4 Distinguishable),Not Started,Not Started,,,,,
+Business Plan Template.Docx,Open PDF,General,620,Tier 1,Complete,25/03/2026,Fail,Fail,https://check.axes4.com/en/result/40b89972-f497-46a2-8a09-9c41b88d0ab9,"46 structure elements using incorrect tag types
+38 structure tree warnings
+3 metadata failures
+1 document settings failure","43 structure/tagging failures (1.3 Adaptable)
+3 navigation failures (2.4 Navigable)
+56 language failures (3.1 Readable)
+1 compatibility failure + 38 warnings (4.1 Compatible)",Not Started,Not Started,,,,,
+Third Party Mandate Business,Open PDF,Forms,608,Tier 1,Complete,25/03/2026,Pass,Pass,https://check.axes4.com/en/result/d98a3f20-d6ca-47c0-9145-a2c6cc0b1404,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Hsbc Corporate Card Factsheet,Open PDF,Products,563,Tier 1,Complete,25/03/2026,Pass,Pass,https://check.axes4.com/en/result/6ae8bfaf-e30e-4df8-92b3-557bda7b6575,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Client Account Additional Conditions,Open PDF,Regulations,552,Tier 1,Complete,25/03/2026,Pass,Fail,https://check.axes4.com/en/result/21cbb0c8-1d05-479d-8a20-6a84c791bf91,The file meets all machine-verifiable PDF/UA requirements.,36 colour contrast failures (1.4 Distinguishable),Not Started,Not Started,,,,,
+Hsbc Uk Forward Planning 2025,Open PDF,Campaigns,550,Tier 1,Blocked,25/03/2026,Fail,Fail,https://check.axes4.com/en/result/e5cc5d6e-9877-4845-b192-59bc8824c82a,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Business Loan Direct Debit Mandate,Open PDF,General,468,Tier 1,Blocked,25/03/2026,Fail,Fail,https://check.axes4.com/en/result/1a4a2c72-ccd1-4ced-a71f-7102019cfeb5,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Business Internet Banking Additional Conditions,Open PDF,Regulations,463,Tier 1,Complete,25/03/2026,Pass,Fail,https://check.axes4.com/en/result/91296fe2-b42f-4e62-a791-4b3acb258d94,The file meets all machine-verifiable PDF/UA requirements.,5 colour contrast failures (1.4 Distinguishable),Not Started,Not Started,,,,,
+Hsbc Uk Womens Business Growth Initiative Report,Open PDF,Campaigns,462,Tier 1,Blocked,25/03/2026,Fail,Fail,https://check.axes4.com/en/result/d33f0e90-379e-4d63-8de2-b26ac828c098,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Hsbc Financing For Growth Report,Open PDF,Campaigns,458,Tier 1,In Progress,25/03/2026,,,File size too large,File size too large,File size too large,Not Started,Not Started,,,,,
+Business Debit Card Factsheet 2,Open PDF,Products,452,Tier 1,Complete,25/03/2026,Pass,Pass,https://check.axes4.com/en/result/6f2cce34-992f-40a4-9acc-c429b335fb88,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Guarantee And Standby Letters Of Credit Wording,Open PDF,Products,431,Tier 1,Blocked,25/03/2026,Fail,Fail,https://check.axes4.com/en/result/f7d6ce3a-c859-4734-90d4-e19d32afac8f,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Country Groupings,Open PDF,GIB/RF/IIF,401,Tier 1,Complete,25/03/2026,Partial,Partial,https://check.axes4.com/en/result/21fdfa89-83eb-4201-8e51-2c3ed010e609,"255 structure tree warnings
+",255 compatibility warnings (4.1 Compatible),Not Started,Not Started,,,,,
+Business Banking Price List,Open PDF,General,397,Tier 1,Complete,25/03/2026,Pass,Fail,https://check.axes4.com/en/result/f2f319f7-d274-45fe-b1de-bd673d37e37f,The file meets all machine-verifiable PDF/UA requirements.,37 colour contrast failures (1.4 Distinguishable),Not Started,Not Started,,,,,
+Business Deposit Account Additional Conditions,Open PDF,General,383,Tier 1,Complete,25/03/2026,Pass,Pass,https://check.axes4.com/en/result/459d996f-9439-4924-8940-8976b09e3f35,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Sepa Key Facts,Open PDF,Solutions,381,Tier 1,Complete,25/03/2026,Pass,Pass,https://check.axes4.com/en/result/43d1c023-bd8d-45d3-a967-51b14d481e74,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Hsb Bacs Factsheet,Open PDF,Products,370,Tier 1,Complete,25/03/2026,Pass,Pass,https://check.axes4.com/en/result/49aced55-e28c-4b33-91de-ebe4ae0354bd,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Commercial Card Agreement Terms,Open PDF,General,365,Tier 1,Complete,25/03/2026,Pass,Fail,https://check.axes4.com/en/result/7769ec15-5d55-4a4c-9782-ccc7719f20bb,The file meets all machine-verifiable PDF/UA requirements.,3 colour contrast failures (1.4 Distinguishable),Not Started,Not Started,,,,,
+Hsbc Commercial Card Factsheet,Open PDF,Products,365,Tier 1,Complete,25/03/2026,Pass,Fail,https://check.axes4.com/en/result/e5e20d45-3861-4653-af71-3cc772230027,The file meets all machine-verifiable PDF/UA requirements.,"3 colour contrast failures (1.4 Distinguishable)
+",Not Started,Not Started,,,,,
+Going Global For Growth Report Latest,Open PDF,Campaigns,356,Tier 1,Blocked,25/03/2026,Fail,Fail,https://check.axes4.com/en/result/566882be-5b7b-4571-9878-36860ca9f755,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Doc Lc Application Form,Open PDF,Solutions,355,Tier 1,Complete,25/03/2026,Fail,Fail,https://check.axes4.com/en/result/c0b4cd77-99c6-4cf1-912f-f7645eaac5a1,"6 fonts not embedded
+890 content items not properly tagged
+109 structure elements using incorrect tag types + 16 warnings
+1 structure tree warning
+218 alternative descriptions missing
+2 metadata failures
+4 document settings failures","
+218 missing alt text (1.1 Text Alternatives)
+896 structure/tagging failures + 16 warnings (1.3 Adaptable)
+100 colour contrast failures (1.4 Distinguishable)
+5 navigation failures (2.4 Navigable)
+109 compatibility failures + 1 warning (4.1 Compatible)",Not Started,Not Started,,,,,
+Hbuk Ftd Additional Conditions,Open PDF,General,343,Tier 1,Complete,25/03/2026,Pass,Pass,https://check.axes4.com/en/result/3a0ab535-4870-4f86-a10a-3115c019af91,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Statement_Reconciliation_Smart_Form_And_Aged_Debt_Report_Guide,Open PDF,GIB/RF/IIF,324,Tier 1,Complete,25/03/2026,Pass,Pass,https://check.axes4.com/en/result/973d70cc-d47c-4cc3-bc3a-8ef45fe7105d,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Hsbc Uk Forward Planning,Open PDF,Campaigns,313,Tier 1,Blocked,25/03/2026,Fail,Fail,https://check.axes4.com/en/result/62726924-fb22-4edf-bd35-b5d68743d764,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Customer Documentation Guide 12Dec19,Open PDF,Campaigns,309,Tier 1,Complete,25/03/2026,Fail,Fail,https://check.axes4.com/en/result/cdb3b6ac-c482-47d1-a291-585bccb8630c,"2 fonts not embedded
+54 structure elements using incorrect tag types
+58 structure tree warnings
+54 alternative descriptions missing + 1 warning
+1 metadata failure","54 missing alt text + 1 warning (1.1 Text Alternatives)
+56 structure/tagging failures (1.3 Adaptable)
+58 compatibility warnings (4.1 Compatible)",Not Started,Not Started,,,,,
+Instant Advice,Open PDF,Solutions,309,Tier 1,Complete,25/03/2026,Pass,Pass,https://check.axes4.com/en/result/ea1d0cfa-bb3e-4d35-8c77-ef0160c83aed,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Product Guide Invoice Discounting,Open PDF,Products,303,Tier 1,Complete,25/03/2026,Pass,Pass,https://check.axes4.com/en/result/91d1feab-e0a8-44e8-95b7-7c5dedfaf511,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Hsbc Virtual Card Factsheet,Open PDF,Products,302,Tier 1,Complete,25/03/2026,Pass,Pass,https://check.axes4.com/en/result/04ebbacb-8137-4e9a-96c7-2679f357142b,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Business Loan Direct Debit Mandate,Open PDF,General,290,Tier 2,Blocked,30/03/2026,Partial,Partial,https://check.axes4.com/en/result/b1ccaaf6-3a55-473d-9191-f7f1587b9fcd,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Aged Debtor Report Template,Open PDF,GIB/RF/IIF,277,Tier 2,Blocked,31/03/2026,Fail,Fail,XLS File,XLS File,XLS File,Not Started,Not Started,,,,,
+Collect Instruction,Open PDF,GIB/RF/IIF,257,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/7542a859-8e3a-4b92-9362-1a31f472bc80,8 content items not properly tagged,8 structure/tagging failures (1.3 Adaptable),Not Started,Not Started,,,,,
+Business Money Manager Community Savings Account,Open PDF,General,255,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/8638ca8d-74cc-40c2-a0cd-ce23e80c39d6,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Business Money Market Account Additional Condition,Open PDF,General,253,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/ded648d2-672f-419e-baa4-9bb3accbab22,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Business Telephone Banking Additional Conditions,Open PDF,Regulations,240,Tier 2,Complete,31/03/2026,Partial,Partial,https://check.axes4.com/en/result/f3a776d6-a507-47a3-ba72-fb92f35640e0,"48 structure tree warnings
+","48 structure tree warnings
+",Not Started,Not Started,,,,,
+Hsbc Current Account Switch Guide,Open PDF,Products,240,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/35bcee4b-a503-4ae9-967f-c59774abd7d5,"3 content items not properly tagged
+2 metadata failures
+1 document settings failure
+
+","3 structure/tagging failures (1.3 Adaptable)
+2 navigation failures (2.4 Navigable)",Not Started,Not Started,,,,,
+State Recon Guide.Xls,Open PDF,GIB/RF/IIF,238,Tier 2,Blocked,31/03/2026,Partial,Partial,XLS File,XLSx File,XLS File,Not Started,Not Started,,,,,
+Asset Finance Product Guide 2024 Final,Open PDF,Products,230,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/b7f9fefc-c1a0-457d-ba7b-307a37661a31,"38 content items not properly tagged
+2 structure tree warnings
+2 alternative description failures + 8 warnings
+2 metadata failures
+1 document settings failure","2 missing alt text + 8 warnings (1.1 Text Alternatives)
+38 structure/tagging failures (1.3 Adaptable)
+44 colour contrast failures (1.4 Distinguishable)
+2 navigation failures (2.4 Navigable)
+2 compatibility warnings (4.1 Compatible)",Not Started,Not Started,,,,,
+Hsb Cmblit288 Wa,Open PDF,Generic,230,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/0ca41a5d-8351-4ae1-8051-0a668db55369,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Dp270 Setup Business User Guide,Open PDF,Campaigns,227,Tier 2,Blocked,31/03/2026,Partial,Partial,,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Receive Aus Factsheet Global Wallet V2,Open PDF,Solutions,223,Tier 2,Blocked,31/03/2026,Partial,Partial,https://check.axes4.com/en/result/6cf153bf-b0ef-4f0f-be78-223a55a42ee7,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Business Notice Account Additional Conditions,Open PDF,Regulations,218,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/e596c03f-3ea5-44ad-b588-490b010899da,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+business-notice-account-additional-conditions ( (Managing Service Guide ?),Open PDF,Campaigns,211,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/a4850f63-80ba-4e26-9516-698c8bbcd165,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Business Banking Terms And Conditions,Open PDF,General,203,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/2d2a1e2f-3232-4dd5-a162-7040790e33d0,"1 structure element using incorrect tag type
+6 structure tree warnings
+2 role mapping failures","2 structure/tagging failures (1.3 Adaptable)
+5 colour contrast failures (1.4 Distinguishable)",Not Started,Not Started,,,,,
+Invoice Discounting Brochure,Open PDF,Products,201,Tier 2,Complete,31/03/2026,Partial,Partial,https://check.axes4.com/en/result/956f7ecf-215d-40b9-8d16-6c83f064d523,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Business Deposit Account,Open PDF,Generic,193,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/f2953b34-e1a6-4d93-84ff-86ab79524748,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Rfb1085 Financial Services Compensation Scheme Information Sheet,Open PDF,Generic,191,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/defc63a3-1548-4931-aa29-2e16f88068dc,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Business Money Manager Additional Conditions,Open PDF,Products,187,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/5fe338c3-8d49-47a8-af65-7857e3e1b660,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Receive Aus Factsheet Global Wallet,Open PDF,Solutions,186,Tier 2,Blocked,31/03/2026,Partial,Partial,https://check.axes4.com/en/result/e11bbebf-9bfa-4bcc-8b3c-c58a9c029634,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Business Money Manager,Open PDF,Regulations,183,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/feb50726-5c95-4f56-81ff-f0e345db45c1,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Business Money Market Account Additional Condition,Open PDF,General,178,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/81a41f34-6d0c-432d-950f-be116833a05f,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Additional Partners Trustees Executors Administrators Of Deceased Estates,Open PDF,Forms,177,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/63a518e0-edc0-4f5f-a864-67fda4985e5d,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Clients Deposit Account,Open PDF,Regulations,174,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/4dbd0f9b-0a0d-4b29-9093-d5c178e4bb91,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Standard Trade Terms,Open PDF,Solutions,173,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/1333aa7d-c43d-432e-ba32-ed323093678a,"857 content items not properly tagged
+75 structure elements using incorrect tag types
+5 structure tree failures + 1 warning
+71 alternative description warnings
+2 metadata failures
+1 document settings failure
+","71 alt text warnings (1.1 Text Alternatives)
+857 structure/tagging failures (1.3 Adaptable)
+2 navigation failures (2.4 Navigable)",Not Started,Not Started,,,,,
+Demand Guarantees And Sblc Mar 22 Ac59191,Open PDF,Products,163,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/2f034e26-68b7-431c-86ef-e426982e6eee,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Tradepay Factsheet,Open PDF,Products,162,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/d7d7426a-ff27-4c1b-b773-1f64549d3085,"15 structure elements using incorrect tag types
+16 structure tree warnings
+15 alternative descriptions missing
+1 metadata failure","15 missing alt text (1.1 Text Alternatives)
+15 structure/tagging failures (1.3 Adaptable)
+16 compatibility warnings (4.1 Compatible)",Not Started,Not Started,,,,,
+Hsbc Purchasing Card Factsheet,Open PDF,Products,156,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/82146a99-937d-4976-88db-a3f757db5633,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Corporate Card Conditions Of Use,Open PDF,Products,153,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/994d5927-33ec-4e0b-927e-c64c01379a04,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Hsbc Briefing Law Firm Strategy And Investment Survey 2025,Open PDF,Campaigns,153,Tier 2,Blocked,31/03/2026,Partial,Partial,https://check.axes4.com/en/result/f812042b-3f6d-484b-9b99-25edfe703c73,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Debt Purchase Tc,Open PDF,Products,147,Tier 2,Complete,31/03/2026,Pass,Fail,https://check.axes4.com/en/result/12353029-218b-491a-9d8b-3fd50fbe02b7,The file meets all machine-verifiable PDF/UA requirements.,7 colour contrast failures (1.4 Distinguishable),Not Started,Not Started,,,,,
+Hsbc Uk Esg Directory,Open PDF,Solutions,143,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/35b11cf7-0d79-4828-8b0b-7e606d7738b2,"491 content items not properly tagged
+336 structure tree warnings
+273 alternative description warnings
+1 metadata failure","273 alt text warnings (1.1 Text Alternatives)
+491 structure/tagging failures (1.3 Adaptable)
+13 colour contrast failures (1.4 Distinguishable)
+336 compatibility warnings (4.1 Compatible)",Not Started,Not Started,,,,,
+Global Wallet Additional Conditions,Open PDF,General,137,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/30c52255-7903-447f-b141-2ea463204126,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Receivables Finance Brochure,Open PDF,Products,137,Tier 2,404,31/03/2026,Fail,Fail,404 - PDF doenst exist,404 - PDF doenst exist,404 - PDF doenst exist,Not Started,Not Started,,,,,
+Ids Reconciliation Difference Guide,Open PDF,GIB/RF/IIF,134,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/806c64c9-0864-40ab-8a89-d10904cef914,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+1007817 Business Plan Template.Docx,Open PDF,General,130,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/f699b05e-2b34-40d3-8a07-4af32d2a5392,"1 ISO 32000-1 failure
+5 content items not properly tagged
+56 natural language failures
+46 structure elements using incorrect tag types
+38 structure tree warnings
+3 metadata failures
+1 document settings failure
+","43 structure/tagging failures (1.3 Adaptable)
+3 navigation failures (2.4 Navigable)
+56 language failures (3.1 Readable)
+1 compatibility failure + 38 warnings (4.1 Compatible)",Not Started,Not Started,,,,,
+Company Card Terms And Conditions,Open PDF,General,125,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/cd84b6b4-2ee4-419c-8350-c6eecda97507,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Documentary Credit,Open PDF,Solutions,120,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/a799c3b5-aaef-4ccc-aac6-2d7b2207a4aa,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Uk Corporate Tracker,Open PDF,Articles,112,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/8b9b3c5d-9ef6-46c9-88df-137e95d195a2,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Cpp Request,Open PDF,GIB/RF/IIF,111,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/5d1a09ed-8fd5-4d10-9cdd-99d0ec438d49,5 content failures (Content items not properly tagged),5 structure/tagging failures (1.3 Adaptable),Not Started,Not Started,,,,,
+General Terms Conditions,Open PDF,Products,107,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/ef2184a6-818b-4b00-a6db-6d9e07983b24,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Lending Terms And Conditions,Open PDF,General,105,Tier 2,Blocked,31/03/2026,Partial,Partial,https://check.axes4.com/en/result/a62b323b-bba9-4ea4-ab6f-e709d0fa112c,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Request To Amend A Letter Of Credit,Open PDF,Solutions,101,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/a62b323b-bba9-4ea4-ab6f-e709d0fa112c,"6 font failures
+284 content failures (content items not properly tagged)
+44 structure element failures + 10 warnings
+1 structure tree warning
+102 alternative description failures
+2 metadata failures
+3 document settings failures","353 structure/tagging failures + 10 warnings (1.3 Adaptable + 1.4 Distinguishable + 1.1 Text Alternatives)
+4 navigation failures (2.4 Navigable)
+44 compatibility failures + 1 warning (4.1 Compatible)",Not Started,Not Started,,,,,
+Receivables Finance Brochure,Open PDF,GIB/RF/IIF,97,Tier 2,Blocked,31/03/2026,Fail,Fail,404 - PDF doenst exist,404 - PDF doenst exist,404 - PDF doenst exist,Not Started,Not Started,,,,,
+Summary Box Business Notice Account,Open PDF,Regulations,96,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/34ab9a39-3a36-4af6-a1a9-873d66aae249,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Websigner Faqs,Open PDF,Products,96,Tier 2,Complete,31/03/2026,Pass,Fail,https://check.axes4.com/en/result/4ca74442-f86a-4601-bd00-06f97990e595,The file meets all machine-verifiable PDF/UA requirements.,1.4 Distinguishable — 11 failures (under 1 Perceivable),Not Started,Not Started,,,,,
+Business Money Manager Summary Sheet,Open PDF,General,94,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/45ff880b-d713-485f-b8cc-0ea9b5b89c92,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Hsbc Uk Corporate Tracker Insights Paper,Open PDF,Articles,93,Tier 2,Blocked,31/03/2026,Partial,Partial,https://check.axes4.com/en/result/c912d553-0010-45dc-ba59-ada4eaeee87d,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Applying To Borrow,Open PDF,Campaigns,92,Tier 2,Blocked,01/04/2026,Partial,Partial,https://check.axes4.com/en/result/8d356819-11f5-4992-9324-55158e6d576c,"Basic requirement for accessible PDFs not met!
+
+The PDF does not contain an invisible structural layer in the form of tags and therefore does not meet the requirements for further accessibility testing.
+You want us to create an accessible file from your PDF according to PDF/UA and WCAG? Then send your file to our axesService.",,Not Started,Not Started,,,,,
+Notification Of Debts Form,Open PDF,GIB/RF/IIF,92,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/47ac9785-1a34-4477-9495-1d388b2a0bf4,"7 content items not properly tagged
+2 structure tree warnings","7 structure/tagging failures (1.3 Adaptable)
+2 compatibility warnings (4.1 Compatible)",Not Started,Not Started,,,,,
+Takeover Fraud Infographics,Open PDF,Campaigns,91,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/01244fae-61ca-4c47-a86e-603de67d541a,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Instant Advice,Open PDF,Solutions,90,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/938bf5af-99ba-4db8-8fee-904679d222b1,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Request For Transfer Of Letter Of Credit,Open PDF,Solutions,89,Tier 2,Complete,31/03/2026,Fail,Fail,https://check.axes4.com/en/result/e5911aad-08b5-40bb-b424-905ec81f6731,"3 fonts not embedded
+423 content items not tagged
+55 structure element failures + 9 warnings
+1 structure tree warning
+115 alternative descriptions missing
+2 metadata failures
+3 document settings failures","115 missing alt text (1.1 Text Alternatives)
+426 structure/tagging failures + 9 warnings (1.3 Adaptable)
+178 colour contrast failures (1.4 Distinguishable)
+4 navigation failures (2.4 Navigable)
+55 compatibility failures + 1 warning (4.1 Compatible)",Not Started,Not Started,,,,,
+Rf On Hsbcnet User Application Form,Open PDF,GIB/RF/IIF,87,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/dc509438-e68f-47b9-b7a4-8882a21460f2,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Collection Form,Open PDF,GIB/RF/IIF,86,Tier 2,Complete,31/03/2026,Pass,Pass,https://check.axes4.com/en/result/3ab39c1e-4607-4eba-b752-f0b1c6522aa0,The file meets all machine-verifiable PDF/UA requirements.,The file meets all machine-verifiable WCAG requirements (Level A and AA).,Not Started,Not Started,,,,,
+Rf Credit Protection,Open PDF,GIB/RF/IIF,85,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Fx Conversion Rates,Open PDF,Generic,84,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Hsbc Cmb Payment Fraud And Scams,Open PDF,Campaigns,83,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+International Fixed Term Deposit Additional Conditions,Open PDF,Products,83,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Retentions Guide,Open PDF,GIB/RF/IIF,81,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Instruction For Collection Faqs,Open PDF,GIB/RF/IIF,80,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Business Email Compromise Ceo Fraud Infographics,Open PDF,Campaigns,79,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Receivables Finance Brochure,Open PDF,Products,76,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Hsbc Deed Of Priority Unlimited Priority,Open PDF,Campaigns,75,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Hsbc Starting A Franchise Guide,Open PDF,Campaigns,74,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Export Finance,Open PDF,Solutions,73,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Hsbc Payment Fraud Awareness Guide,Open PDF,Campaigns,73,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Adding A New User Profile For Rf,Open PDF,GIB/RF/IIF,72,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Hsbc Current Account Switch Data Privacy Notice,Open PDF,Products,72,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Rapid Reconciliation Factsheet,Open PDF,Products,70,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Client Money Manager Application Form And Additional Conditions,Open PDF,General,66,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Control Account Activity Report Id,Open PDF,GIB/RF/IIF,66,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Credit Protection Service,Open PDF,Products,66,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Finance By Discount,Open PDF,GIB/RF/IIF,66,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Credit Protection User Guide For Invoice Discounting Clients,Open PDF,GIB/RF/IIF,65,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Import Finance,Open PDF,Products,65,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Apply For Seller Loan,Open PDF,Solutions,63,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Ai Fraud Awareness Guide,Open PDF,General,62,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+International Fixed Term Deposits Additional Conditions Hbuk,Open PDF,General,61,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Hsbc Deed Of Priority Specific Asset,Open PDF,Campaigns,59,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Hmrc Factsheet Mar 22 Ac59191,Open PDF,Products,58,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Hsbc Uk Small Business Brand Ambassador Competition Tcs,Open PDF,Campaigns,57,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Capex Report 2024,Open PDF,Campaigns,56,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Briefing Hsbc 2022 Ready To Respond,Open PDF,Campaigns,55,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Documentary Collections,Open PDF,Products,55,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Cashflow Tool.Xls,Open PDF,Forms,54,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Privacy Notice For Uk Customers?Elqtrackid=Dc022Ba66Bbf43478B3A5A65De14E976&Elqaid=2211&Elqat=2,Open PDF,General,54,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Credit Protection Tc,Open PDF,Products,53,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Hsbc Deed Of Priority Property,Open PDF,Campaigns,53,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Lending Terms And Conditions,Open PDF,General,53,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Modern Banking Guide,Open PDF,Campaigns,53,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Guide To Payment Instructions Dec25,Open PDF,Regulations,51,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Business Money Manager Account Summary Sheet,Open PDF,Self-Service,50,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Business Money Market Account Additional Condition,Open PDF,General,50,Tier 2,Not Started,31/03/2026,,,,,,Not Started,Not Started,,,,,
+Request For Early Delivery Of Goods V4,Open PDF,Solutions,48,Tier 2,Not Started,31/03/2026,,,,,,,,,,,,
+Business Money Manager Additional Conditions,Open PDF,Self-Service,47,Tier 2,Not Started,31/03/2026,,,,,,,,,,,,
+Fscs Leaflet,Open PDF,Generic,47,Tier 2,Not Started,31/03/2026,,,,,,,,,,,,
+Hsbc Receivables Finance Price List,Open PDF,GIB/RF/IIF,47,Tier 2,Not Started,31/03/2026,,,,,,,,,,,,
+Id With Digital Connection Faqs,Open PDF,GIB/RF/IIF,47,Tier 2,Not Started,31/03/2026,,,,,,,,,,,,
+Transfer Request Form,Open PDF,GIB/RF/IIF,47,Tier 2,Not Started,31/03/2026,,,,,,,,,,,,
+Business Price List,Open PDF,Regulations,47,Tier 3,Not Started,,,,,,,,,,,,,
+Hbuk Ftd Summary Box,Open PDF,General,46,Tier 3,Not Started,,,,,,,,,,,,,
+Uk Accountancy Sector Outlook Report 2024 2025,Open PDF,Campaigns,44,Tier 3,Not Started,,,,,,,,,,,,,
+Export Finance,Open PDF,Products,43,Tier 3,Not Started,,,,,,,,,,,,,
+Smartsweep Factsheet,Open PDF,Products,43,Tier 3,Not Started,,,,,,,,,,,,,
+Control Account Activity Report Ids,Open PDF,GIB/RF/IIF,42,Tier 3,Not Started,,,,,,,,,,,,,
+Growing Your Business Through Franchising,Open PDF,Campaigns,40,Tier 3,Not Started,,,,,,,,,,,,,
+Forwarding Of Payments Received Direct Form,Open PDF,GIB/RF/IIF,39,Tier 3,Not Started,,,,,,,,,,,,,
+Go Greener Reward Terms,Open PDF,Products,39,Tier 3,Not Started,,,,,,,,,,,,,
+Notice Of Variation For Small Business Banking And Business Banking Customers,Open PDF,Self-Service,39,Tier 3,Not Started,,,,,,,,,,,,,
+Invoice Finance Sales,Open PDF,Products,37,Tier 3,Not Started,,,,,,,,,,,,,
+Uk Grow With Google Practical Ai For Marketing,Open PDF,Generic,37,Tier 3,Not Started,,,,,,,,,,,,,
+Business Money Manager Account Additional Conditions,Open PDF,Self-Service,36,Tier 3,Not Started,,,,,,,,,,,,,
+International Business Instant Access Savings Account Summary Box,Open PDF,Generic,35,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Eligible Green Criteria 2023 Final,Open PDF,Campaigns,33,Tier 3,Not Started,,,,,,,,,,,,,
+Kinetic Business Banking Terms And Conditions,Open PDF,Solutions,33,Tier 3,Not Started,,,,,,,,,,,,,
+Kinetic Savings Account Extra Terms,Open PDF,Solutions,33,Tier 3,Not Started,,,,,,,,,,,,,
+Customer Documentation Guide 12Dec19,Open PDF,General,31,Tier 3,Not Started,,,,,,,,,,,,,
+Fleet Breakdown Cover Terms And Conditions September 2019?Rev=61A16Da177Aa45Afbb07C2Fc6862Cbe6&Hash=D3D5Dca8F92655A62B1015D820B9D4F7,Open PDF,Breakdown,31,Tier 3,Not Started,,,,,,,,,,,,,
+Intro Letter From Customer,Open PDF,GIB/RF/IIF,31,Tier 3,Not Started,,,,,,,,,,,,,
+Business Internet Banking Additional Conditions 20201211,Open PDF,General,30,Tier 3,Not Started,,,,,,,,,,,,,
+Business Lending Appeal Form,Open PDF,General,30,Tier 3,Not Started,,,,,,,,,,,,,
+Client Accounts Additional Conditions 102021,Open PDF,General,30,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Open Payments,Open PDF,General,30,Tier 3,Not Started,,,,,,,,,,,,,
+Rf Direct Collections Guide,Open PDF,GIB/RF/IIF,30,Tier 3,Not Started,,,,,,,,,,,,,
+Client Money Manager Application Form And Additional Conditions,Open PDF,General,29,Tier 3,Not Started,,,,,,,,,,,,,
+International Fixed Term Deposits Additional Conditions Hbuk.Pdf,Open PDF,General,29,Tier 3,Not Started,,,,,,,,,,,,,
+Terms And Conditions Hsbc Of Bond Ticket Giveaway,Open PDF,General,29,Tier 3,Not Started,,,,,,,,,,,,,
+Id With Digital Connection Compatible Packages,Open PDF,GIB/RF/IIF,28,Tier 3,Not Started,,,,,,,,,,,,,
+Uk Grow With Google Social Media For Your Business,Open PDF,Generic,28,Tier 3,Not Started,,,,,,,,,,,,,
+Summary Box International Fixed Term Deposit,Open PDF,Regulations,27,Tier 3,Not Started,,,,,,,,,,,,,
+Uk Country Cross Border Payments Sttl,Open PDF,Products,26,Tier 3,Not Started,,,,,,,,,,,,,
+Assignment Clauses,Open PDF,GIB/RF/IIF,25,Tier 3,Not Started,,,,,,,,,,,,,
+Notification Of Credit Notes Form,Open PDF,GIB/RF/IIF,25,Tier 3,Not Started,,,,,,,,,,,,,
+Receivables Finance Litigation Guide 24 June 2024,Open PDF,GIB/RF/IIF,25,Tier 3,Not Started,,,,,,,,,,,,,
+Debt Purchase Tc,Open PDF,Products,23,Tier 3,Not Started,,,,,,,,,,,,,
+Fsb Toolkit,Open PDF,Articles,23,Tier 3,Not Started,,,,,,,,,,,,,
+General Terms Conditions,Open PDF,Products,22,Tier 3,Not Started,,,,,,,,,,,,,
+Guide To Protecting Your Business From Payment Fraud,Open PDF,Generic,22,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Pbb Corporate Clients Additional Conditions,Open PDF,General,22,Tier 3,Not Started,,,,,,,,,,,,,
+Asia Europe Corridor Outlook,Open PDF,Articles,21,Tier 3,Not Started,,,,,,,,,,,,,
+International Fixed Term Deposit Summary Boxes,Open PDF,Products,21,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Financing Growth Report,Open PDF,Products,20,Tier 3,Not Started,,,,,,,,,,,,,
+To Apply For A Guarantee Or Standby Letter Of Credit,Open PDF,Solutions,19,Tier 3,Not Started,,,,,,,,,,,,,
+Business Deposit Card Application Form,Open PDF,Solutions,18,Tier 3,Not Started,,,,,,,,,,,,,
+Go Greener Sme Reward Terms For Equipment Finance,Open PDF,Products,18,Tier 3,Not Started,,,,,,,,,,,,,
+Open Payments Case Study,Open PDF,General,18,Tier 3,Not Started,,,,,,,,,,,,,
+Charity Trustees Guide 1,Open PDF,Campaigns,17,Tier 3,Not Started,,,,,,,,,,,,,
+Corporate Card Privacy Notice,Open PDF,Products,17,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc E Channel Country Conditions Uk Non Micro Enterprises,Open PDF,General,17,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Tech Event Summary Time To Accelerate,Open PDF,Campaigns,17,Tier 3,Not Started,,,,,,,,,,,,,
+Business Deposit Account Summary Sheet,Open PDF,Generic,16,Tier 3,Not Started,,,,,,,,,,,,,
+Client Factsheet,Open PDF,General,16,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Trading Safely Guide,Open PDF,Campaigns,16,Tier 3,Not Started,,,,,,,,,,,,,
+Wellbeing Guide Uk,Open PDF,General,16,Tier 3,Not Started,,,,,,,,,,,,,
+Business Banking Price List?Vid=01902Fa066E70007A79Ce0C791Fb0506F004506700Fb8&Sid=1724940732345&Bln=Ws,Open PDF,General,15,Tier 3,Not Started,,,,,,,,,,,,,
+Econ 101 Uk Inflation Explainer Cmbwl,Open PDF,Campaigns,15,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Global Private Banking The Global Entrepreneurial Wealth Report 2024,Open PDF,General,15,Tier 3,Not Started,,,,,,,,,,,,,
+Sustainability,Open PDF,Campaigns,15,Tier 3,Not Started,,,,,,,,,,,,,
+Telling Stories With Data Visualisation,Open PDF,Generic,15,Tier 3,Not Started,,,,,,,,,,,,,
+The Move To Net Zero And Sustainability Harper Adams,Open PDF,Campaigns,15,Tier 3,Not Started,,,,,,,,,,,,,
+Ucl Corporate Real Estate Introductory Guide,Open PDF,Campaigns,15,Tier 3,Not Started,,,,,,,,,,,,,
+Clean Electric Vol 6,Open PDF,Campaigns,14,Tier 3,Not Started,,,,,,,,,,,,,
+Cmblit206 02 Charities,Open PDF,Forms,14,Tier 3,Not Started,,,,,,,,,,,,,
+Privacy Notice For Uk Customers,Open PDF,General,14,Tier 3,Not Started,,,,,,,,,,,,,
+Rfb Clients Deposit Account Summary,Open PDF,General,14,Tier 3,Not Started,,,,,,,,,,,,,
+Credit Protection Service,Open PDF,Products,13,Tier 3,Not Started,,,,,,,,,,,,,
+Fleet Europe Terms And Conditions May 2018?La=En&Hash=Ca8D65Dab2A485E888D1Bc05E9575999,Open PDF,Breakdown,13,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Corporate Cards,Open PDF,General,13,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc E Channel Country Conditions Uk Micro Enterprises,Open PDF,General,13,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Open Payments Privacy Notice,Open PDF,Solutions,13,Tier 3,Not Started,,,,,,,,,,,,,
+Sustainable Finance Vol 6,Open PDF,Campaigns,13,Tier 3,Not Started,,,,,,,,,,,,,
+Terms And Conditions For Hsbc Championships Tennis Tournament 2025 Ticket Giveaway,Open PDF,General,13,Tier 3,Not Started,,,,,,,,,,,,,
+Wellbeing Guide,Open PDF,Forms,13,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc E Channel Country Conditions Uk Micro Enterprises,Open PDF,General,12,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Score Country Conditions Uk,Open PDF,General,12,Tier 3,Not Started,,,,,,,,,,,,,
+Uk In Focus January 1,Open PDF,General,12,Tier 3,Not Started,,,,,,,,,,,,,
+Uk In Focus October 2025,Open PDF,Articles,12,Tier 3,Not Started,,,,,,,,,,,,,
+Asset Based Lending Product Guide,Open PDF,Products,11,Tier 3,Not Started,,,,,,,,,,,,,
+Business Banking Terms And Conditions,Open PDF,General,11,Tier 3,Not Started,,,,,,,,,,,,,
+Business Telephone Banking Additional Conditions,Open PDF,General,11,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Score Country Conditions Uk,Open PDF,General,11,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Esg Directory?Link=Header,Open PDF,Solutions,11,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbccorporatebanking Openbankingperformanceandavailabilityreport Q4 2024,Open PDF,General,11,Tier 3,Not Started,,,,,,,,,,,,,
+Safeguard Guide For Religious Organisations 2021,Open PDF,General,11,Tier 3,Not Started,,,,,,,,,,,,,
+Southern Ireland Debt Purchase Tc,Open PDF,Products,11,Tier 3,Not Started,,,,,,,,,,,,,
+Ucl Exec Summary Agriculture,Open PDF,Campaigns,11,Tier 3,Not Started,,,,,,,,,,,,,
+Uk Country Cross Border Payments.Sttl,Open PDF,Pdf,11,Tier 3,Not Started,,,,,,,,,,,,,
+Wellbeing Guide Uk,Open PDF,General,11,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc E Channel Country Conditions Uk Non Micro Enterprises,Open PDF,General,10,Tier 3,Not Started,,,,,,,,,,,,,
+Corporate Card,Open PDF,General,9,Tier 3,Not Started,,,,,,,,,,,,,
+Uk In Focus July,Open PDF,Articles,9,Tier 3,Not Started,,,,,,,,,,,,,
+Uk In Focus November 2025,Open PDF,Articles,9,Tier 3,Not Started,,,,,,,,,,,,,
+Briefing Hsbc 2022 Ready To Respond,Open PDF,Campaigns,7,Tier 3,Not Started,,,,,,,,,,,,,
+Cmblit202 02 Spending Paradox,Open PDF,Forms,7,Tier 3,Not Started,,,,,,,,,,,,,
+Electronic Wallet For Business Debit Card Additional Conditions,Open PDF,Articles,7,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Gewr Uk Report,Open PDF,General,7,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbcbusinessbanking Openbankingperformanceandavailabilityreport Q3 2025,Open PDF,General,7,Tier 3,Not Started,,,,,,,,,,,,,
+Container.Aspx?Currentstep=Clientdetails&Currentworkflow=Standardb2C&Producttarget=Tradesman&Source=52806004&_Gl=1*2Le6Vt*_Gcl_Au*Mtczody2Odi4Ni4Xnzuwnjczodm2*_Ga*Nzuxotg3Oty5Lje3Ndi0Njmymtu.*_Ga_Rm6N9W0H53*Cze3Ntgyotgxodakbzyzjgcwjhqxnzu4Mjk4Mtgwjgo2Mcrsmcroma..&Utm_Source=Website&Utm_Medium=Website&Utm_Campaign=Hsbc+Public+Website+Tradesmen+Q%26B,Open PDF,Awe,6,Tier 3,Not Started,,,,,,,,,,,,,
+Content.Aspx?Content=Hsbcriskassessment,Open PDF,Www.Privacyguard.Co.Uk,6,Tier 3,Not Started,,,,,,,,,,,,,
+Digital Wallet For Commercial Card Additional Conditions,Open PDF,General,6,Tier 3,Not Started,,,,,,,,,,,,,
+Electronic Wallet For Debit Cards Hbuk Hsb Cmblit357 Wa,Open PDF,Solutions,6,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Global Supply Chains Networks Of Tomorrow Uk,Open PDF,Campaigns,6,Tier 3,Not Started,,,,,,,,,,,,,
+Invoice Finance Guide,Open PDF,GIB/RF/IIF,6,Tier 3,Not Started,,,,,,,,,,,,,
+Southern Ireland Credit Protection Tc,Open PDF,Products,6,Tier 3,Not Started,,,,,,,,,,,,,
+Southern Ireland General Tc,Open PDF,Products,6,Tier 3,Not Started,,,,,,,,,,,,,
+The Future Of Climate Friendly Clothing,Open PDF,Campaigns,6,Tier 3,Not Started,,,,,,,,,,,,,
+Uk In Focus December 2025,Open PDF,Articles,6,Tier 3,Not Started,,,,,,,,,,,,,
+Business Money Market Account Summary,Open PDF,Regulations,5,Tier 3,Not Started,,,,,,,,,,,,,
+Credit Protection Tc,Open PDF,Products,5,Tier 3,Not Started,,,,,,,,,,,,,
+Digital Wallet For Commercial Card Hbuk Hsb Cmblit355 Wa,Open PDF,Solutions,5,Tier 3,Not Started,,,,,,,,,,,,,
+Going Global For Growth Report Latest,Open PDF,Campaigns,5,Tier 3,Not Started,,,,,,,,,,,,,
+Growing Impact Of Ai Report,Open PDF,Articles,5,Tier 3,Not Started,,,,,,,,,,,,,
+Hsb Cmblit301 2 Wa Corporate Cards Conditions Of Use,Open PDF,Solutions,5,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Cm2622 Setup Business User Guide Nb V2,Open PDF,Campaigns,5,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbccorporatebanking Openbankingperformanceandavailabilityreport Q3 2025,Open PDF,General,5,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbcuk Account Closure Form,Open PDF,General,5,Tier 3,Not Started,,,,,,,,,,,,,
+Rac Hsbc Growth Experience,Open PDF,Campaigns,5,Tier 3,Not Started,,,,,,,,,,,,,
+Request To Amend A Guarantee Or Standby Letter Of Credit,Open PDF,Solutions,5,Tier 3,Not Started,,,,,,,,,,,,,
+Change Of Address Form,Open PDF,Solutions,4,Tier 3,Not Started,,,,,,,,,,,,,
+Digital Wallet For Company Card Hbuk Hsb Cmblit356 Wa,Open PDF,Solutions,4,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Esg Directory?Header,Open PDF,Solutions,4,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Tech Event Summary The Challenge Of Change,Open PDF,Campaigns,4,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbckinetic Openbankingperformanceandavailabilityreport Q1 2025,Open PDF,General,4,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbckinetic Openbankingperformanceandavailabilityreport Q4 2024,Open PDF,General,4,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Esg Directory?Link=Carbon,Open PDF,Solutions,3,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Esg Directory?Link=Supply,Open PDF,Solutions,3,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbckinetic Openbankingperformanceandavailabilityreport Q3 2025,Open PDF,General,3,Tier 3,Not Started,,,,,,,,,,,,,
+Uk In Focus September,Open PDF,General,3,Tier 3,Not Started,,,,,,,,,,,,,
+8 Steps To Make Your Business More Inclusive And Diverse,Open PDF,Campaigns,2,Tier 3,Not Started,,,,,,,,,,,,,
+Digital Wallet For Company Card Additional Conditions,Open PDF,Articles,2,Tier 3,Not Started,,,,,,,,,,,,,
+E Wallet For Corporate Cards Additional Conditions,Open PDF,Articles,2,Tier 3,Not Started,,,,,,,,,,,,,
+E Wallet For Hsbc Kinetic Credit Card Additional Conditions,Open PDF,Articles,2,Tier 3,Not Started,,,,,,,,,,,,,
+Econ 101 Uk Inflation Explainer Cmbwl Public,Open PDF,Generic,2,Tier 3,Not Started,,,,,,,,,,,,,
+Glimpse Into The Future,Open PDF,Campaigns,2,Tier 3,Not Started,,,,,,,,,,,,,
+Hsb Cmblit374 01 Wa Corporate Cards Privacy Notice,Open PDF,Solutions,2,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Esg Directory?Link=Footer,Open PDF,Solutions,2,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Esg Directory?Strategy,Open PDF,Solutions,2,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbccorporatebanking Openbankingperformanceandavailabilityreport Q1 2025,Open PDF,General,2,Tier 3,Not Started,,,,,,,,,,,,,
+Managing Money With Dementia,Open PDF,Help & Support,2,Tier 3,Not Started,,,,,,,,,,,,,
+Mandate For General Organisations,Open PDF,Forms,2,Tier 3,Not Started,,,,,,,,,,,,,
+Rlsif Factsheet,Open PDF,Solutions,2,Tier 3,Not Started,,,,,,,,,,,,,
+1008189 Gps Case Study Pdf Rework S1 V14,Open PDF,Articles,1,Tier 3,Not Started,,,,,,,,,,,,,
+240221 Annual Report And Accounts 2023,Open PDF,Hsbc-Uk-Bank-Plc,1,Tier 3,Not Started,,,,,,,,,,,,,
+Business Banking Terms And Conditions,Open PDF,Regulations,1,Tier 3,Not Started,,,,,,,,,,,,,
+Business Deposit Card Application Form,Open PDF,Solutions,1,Tier 3,Not Started,,,,,,,,,,,,,
+Business Internet Banking Additional Conditions,Open PDF,Campaigns,1,Tier 3,Not Started,,,,,,,,,,,,,
+Cashflow Tool,Open PDF,Forms,1,Tier 3,Not Started,,,,,,,,,,,,,
+Cmb Uk In Focus April 2024,Open PDF,General,1,Tier 3,Not Started,,,,,,,,,,,,,
+Commercial Card Agreement Terms,Open PDF,General,1,Tier 3,Not Started,,,,,,,,,,,,,
+E Wallet For Hsbc Kinetic Credit Card Hsb Cmblit359 Wa,Open PDF,Solutions,1,Tier 3,Not Started,,,,,,,,,,,,,
+E Wallet For Hsbc Kinetic Debit Card Additional Conditions,Open PDF,Articles,1,Tier 3,Not Started,,,,,,,,,,,,,
+E Wallet For Hsbc Kinetic Debit Cards Hsb Cmblit358 Wa,Open PDF,Solutions,1,Tier 3,Not Started,,,,,,,,,,,,,
+Fraud And Cyber Awareness App App Terms,Open PDF,Campaigns,1,Tier 3,Not Started,,,,,,,,,,,,,
+How Cutting Edge Technologies Are Disrupting Manufacting,Open PDF,Campaigns,1,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Esg Directory?Audit,Open PDF,Solutions,1,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Esg Directory?Disclosure,Open PDF,Solutions,1,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Esg Directory?Geospatial,Open PDF,Solutions,1,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Esg Directory?Header=1,Open PDF,Solutions,1,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Esg Directory?Link=Ag,Open PDF,Solutions,1,Tier 3,Not Started,,,,,,,,,,,,,
+Hsbc Uk Esg Directory?Supply,Open PDF,Solutions,1,Tier 3,Not Started,,,,,,,,,,,,,
+Muntons Sustainability Report 2020,Open PDF,04,1,Tier 3,Not Started,,,,,,,,,,,,,
+Safeguard Guide For Religious Organisations 2021,Open PDF,General,1,Tier 3,Not Started,,,,,,,,,,,,,
+Safeguard Guide For Religious Organisations 2021,Open PDF,Campaigns,1,Tier 3,Not Started,,,,,,,,,,,,,
+Southern Ireland Credit Protection Tc,Open PDF,Products,1,Tier 3,Not Started,,,,,,,,,,,,,
+Southern Ireland Debt Purchase Tc,Open PDF,Products,1,Tier 3,Not Started,,,,,,,,,,,,,
+Standard Trade Terms,Open PDF,Solutions,1,Tier 3,Not Started,,,,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/pdfs/article/international-fixed-term-deposit-factsheet-hbuk.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/pdfs/common/green-loan-factsheet.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/pdfs/common/hsbc-open-payments-end-user-terms.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/pdfs/common/property-loan-factsheet.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/pdfs/common/sustainability-linked-loan-factsheet.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/pdfs/generic/gib-rf-iif/credit-protect-guide-uk.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/pdfs/generic/gib-rf-iif/invoice-discounting-credit-protection-guide.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/pdfs/generic/gib-rf-iif/receivables-finance-price-list.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/pdfs/solutions/hsbc-cm2622-setup-business-user-guide-nb-v2.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/ac40434-documentary-collections-factsheet.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/ac40434-export-finance-factsheet.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/ac40434-import-finance-factsheet.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,"https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/btb-setup-primary-user-ciim.pdf
+",,,,,,404,404,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/btb-add-user.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/btb-add-user-ciim.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/btb-primary-user.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/commercial-card-factsheet.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/corp-card-factsheet.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/direct-debit-mandate.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/fuel-factsheet.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/import-finance-factsheet-masterbrand.pdf,,,,,,404,404,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/instant-advice.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/international-instant-access-savings-account-summary.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/revolving-credit-facility-factsheet.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/rfb1209-client-deposit-account-factsheet.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/rfb1238-mivision-factsheet.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/rfb1831-commercial-cardholder-application-form.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/rfb1881-international-account-factsheet.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/rfb1895-purchasing-card.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/rfb1968-international-fixed-term-deposits-summary.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/rfb1994-lodge-card-factsheet.pdf,,,,,,PASS,PASS,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/virtual-card.pdf,,,,,,FAIL,FAIL,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/PDFs/hbuk-ftd-additional-conditions.pdf,,,,,,,,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/PDFs/hbuk-ftd-summary-box.pdf,,,,,,,,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/PDFs/common/marsh-factsheet.pdf,,,,,,,,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/corp-card-factsheet.pdf,,,,,,,,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/pdfs/common/pcl-factsheet,,,,,,,,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/rfb1881-international-account-factsheet,,,,,,,,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/PDFs/common/allianz-trade-factsheet.pdf,,,,,,,,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/library/business-uk/pdfs/cookies-notice.pdf,,,,,,,,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/pdfs/solutions/hsbc-digital-wallet-privacy-notice-2025,,,,,,,,,,,,,,,,,
+,https://www.business.hsbc.uk/-/media/media/uk/pdfs/solutions/hsbc-digital-wallet-corporate-cards-conditions-of-use-2025,,,,,,,,,,,,,,,,,

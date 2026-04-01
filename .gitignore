@@ -1,0 +1,16 @@
+.DS_Store
+.env
+.env.local
+.pytest_cache/
+.venv/
+__pycache__/
+*.pyc
+.coverage
+node_modules/
+backend/.mypy_cache/
+backend/.ruff_cache/
+backend/.pytest_cache/
+backend/reports/
+backend/tmp/
+frontend/dist/
+frontend/node_modules/
