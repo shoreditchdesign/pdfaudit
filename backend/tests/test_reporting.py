@@ -73,7 +73,10 @@ def test_report_builder_returns_workbook_bytes() -> None:
     sheet = workbook["Sheet1"]
     assert workbook.sheetnames == ["Sheet1"]
     assert sheet.max_row == 2
-    assert sheet["A1"].value == "ID"
-    assert REPORT_COLUMNS[-5] == "Failure Summary"
-    assert sheet["M2"].value == "PASS"
-    assert sheet["Q2"].value == "PASS"
+    assert sheet["A1"].value == "PDF Name"
+    assert sheet["B2"].value == "Open PDF"
+    assert sheet["B2"].hyperlink.target == "https://example.com/test.pdf"
+    assert sheet["F2"].value == "Complete"
+    assert sheet["H2"].value == "Pass"
+    assert sheet["I2"].value == "Pass"
+    assert REPORT_COLUMNS[19] == "Original URL"

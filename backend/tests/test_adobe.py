@@ -33,7 +33,11 @@ def test_adobe_client_maps_report_findings_into_rule_results(monkeypatch) -> Non
 
 
 def test_adobe_client_returns_api_unavailable_without_credentials() -> None:
-    settings = Settings()
+    settings = Settings(
+        ADOBE_CLIENT_ID="",
+        ADOBE_CLIENT_SECRET="",
+        ADOBE_SCOPE="",
+    )
     client = AdobeClient(settings, enabled=True)
     results = client.check_document("/tmp/example.pdf")
     assert results["adobe_full_check"].status == CheckStatus.API_UNAVAILABLE
