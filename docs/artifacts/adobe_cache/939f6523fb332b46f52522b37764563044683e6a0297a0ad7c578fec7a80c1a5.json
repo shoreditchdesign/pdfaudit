@@ -1,0 +1,6 @@
+{
+  "url": "https://www.business.hsbc.uk/-/media/media/uk/pdfs/generic/gib-rf-iif/invoice-discounting-smart-form.pdf",
+  "raw_report": {
+    "error": "Adobe accessibility job failed with status failed: {'error': {'code': 'PDF_XFA_FORM', 'message': 'Source PDF is a XFA Form and cannot be processed.; requestId=WLA6jJ48OcVE9RlYDXGWOOGATEzp6iHb', 'status': 400}, 'status': 'failed'}"
+  }
+}

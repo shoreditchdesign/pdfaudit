@@ -7,31 +7,33 @@ import re
 from urllib.parse import urlparse
 
 from openpyxl import Workbook, load_workbook
+from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
+from openpyxl.utils import get_column_letter
 
 from app.models.domain import CheckStatus, DocumentAuditRecord, RetrievalCategory, SummaryMetrics
+from app.services.adobe_cache import AdobeReportStore
 from app.services.rule_catalog import RULE_DEFINITIONS
 
 
 TRACKER_COLUMNS = [
     "PDF Name",
-    "URL",
-    "Category",
     "Total Traffic",
-    "Priority Tier",
-    "Axes Audit Status",
     "Date Audited",
     "PDF/ UA Reults",
     "WCAG Reults",
-    "Link to Audit report",
     "PDF/UA Notes",
     "WCAG Notes",
     "Remediation Status",
     "Adobe Acrobat Audit Status",
     "Remediation Notes",
-    "Re-test Result",
-    "Link to Audit report",
-    "3rd Re-test Result",
-    "Link to Audit report",
+]
+
+WCAG_DETAIL_COLUMNS = [
+    "WCAG Criteria Affected",
+    "WCAG Adobe Findings",
+    "WCAG Adobe Statuses",
+    "WCAG Fix Directions",
+    "WCAG Machine-Verifiable",
 ]
 
 TECHNICAL_COLUMNS = [
@@ -60,6 +62,7 @@ RULE_COLUMNS = [
     "doc_language_present",
     "at_access_not_blocked",
     "extractable_text_present",
+    "tagged_pdf_present",
     "at_least_one_heading",
     "figure_alt_present",
     "bookmarks_present_if_gt_3_pages",
@@ -76,11 +79,193 @@ RULE_COLUMNS = [
 
 REPORT_COLUMNS = [
     *TRACKER_COLUMNS,
+    *WCAG_DETAIL_COLUMNS,
     *TECHNICAL_COLUMNS,
     *[RULE_DEFINITIONS[rule_id].title for rule_id in RULE_COLUMNS],
 ]
 
+HEADER_GROUPS = [
+    ("Tracker Summary", TRACKER_COLUMNS),
+    ("WCAG Detail", WCAG_DETAIL_COLUMNS),
+    ("Source & Retrieval", TECHNICAL_COLUMNS[:8]),
+    ("Audit Summary", TECHNICAL_COLUMNS[8:12]),
+    ("Remediation & Detail", TECHNICAL_COLUMNS[12:15]),
+    ("Retrieval Checks", [RULE_DEFINITIONS[rule_id].title for rule_id in RULE_COLUMNS[:3]]),
+    (
+        "Core PDF/UA",
+        [
+            RULE_DEFINITIONS["doc_title_present"].title,
+            RULE_DEFINITIONS["doc_language_present"].title,
+            RULE_DEFINITIONS["at_access_not_blocked"].title,
+            RULE_DEFINITIONS["extractable_text_present"].title,
+            RULE_DEFINITIONS["tagged_pdf_present"].title,
+        ],
+    ),
+    (
+        "Semantic Review",
+        [
+            RULE_DEFINITIONS["at_least_one_heading"].title,
+            RULE_DEFINITIONS["figure_alt_present"].title,
+            RULE_DEFINITIONS["bookmarks_present_if_gt_3_pages"].title,
+            RULE_DEFINITIONS["toc_present_general_doc_if_ge_5"].title,
+            RULE_DEFINITIONS["lists_use_l"].title,
+            RULE_DEFINITIONS["tables_use_table_tag"].title,
+            RULE_DEFINITIONS["links_use_link_tag"].title,
+            RULE_DEFINITIONS["form_fields_have_tu"].title,
+            RULE_DEFINITIONS["footnotes_use_note"].title,
+        ],
+    ),
+    (
+        "Adobe Checks",
+        [
+            RULE_DEFINITIONS["colour_contrast_machine_check"].title,
+            RULE_DEFINITIONS["reading_order_machine_check"].title,
+            RULE_DEFINITIONS["adobe_full_check"].title,
+        ],
+    ),
+]
+
+GROUP_FILLS = {
+    "Tracker Summary": "1F4E78",
+    "Source & Retrieval": "245C69",
+    "Audit Summary": "4F6D3A",
+    "Remediation & Detail": "6E5C2F",
+    "Retrieval Checks": "375A7F",
+    "Core PDF/UA": "1B6E65",
+    "Semantic Review": "5E7A2F",
+    "Adobe Checks": "7F3F1B",
+}
+
 ILLEGAL_XLSX_CHAR_RE = re.compile(r"[\x00-\x08\x0B\x0C\x0E-\x1F]")
+
+STATUS_STYLE_MAP = {
+    "PASS": {"fill": "DCFCE7", "font": "166534"},
+    "Pass": {"fill": "DCFCE7", "font": "166534"},
+    "Needs Review": {"fill": "FEF3C7", "font": "92400E"},
+    "Pending Adobe": {"fill": "E5E7EB", "font": "4B5563"},
+    "COMPLETE": {"fill": "DBEAFE", "font": "1D4ED8"},
+    "Complete": {"fill": "DBEAFE", "font": "1D4ED8"},
+    "FAIL": {"fill": "FEE2E2", "font": "B91C1C"},
+    "Fail": {"fill": "FEE2E2", "font": "B91C1C"},
+    "HARD_404": {"fill": "FEE2E2", "font": "B91C1C"},
+    "SOFT_404": {"fill": "FEE2E2", "font": "B91C1C"},
+    "REQUEST_ERROR": {"fill": "FEE2E2", "font": "B91C1C"},
+    "BLOCKED": {"fill": "FDE68A", "font": "92400E"},
+    "Blocked": {"fill": "FDE68A", "font": "92400E"},
+    "ALT_LANDING_PAGE_NON_PDF": {"fill": "FDE68A", "font": "92400E"},
+    "REVIEW_REQUIRED": {"fill": "FEF3C7", "font": "92400E"},
+    "NEEDS_MANUAL_REVIEW": {"fill": "FEF3C7", "font": "92400E"},
+    "API_UNAVAILABLE": {"fill": "E5E7EB", "font": "4B5563"},
+    "N/A": {"fill": "F3F4F6", "font": "6B7280"},
+    "Not Started": {"fill": "F3F4F6", "font": "6B7280"},
+}
+
+TRACKER_STATUS_COLUMNS = {
+    "Axes Audit Status",
+    "PDF/ UA Reults",
+    "WCAG Reults",
+    "Remediation Status",
+    "Adobe Acrobat Audit Status",
+}
+
+TECHNICAL_STATUS_COLUMNS = {
+    "Retrieval Category",
+    "Overall Result",
+    "HSBC Policy Result",
+}
+
+WRAP_TEXT_COLUMNS = {
+    *TRACKER_COLUMNS,
+    *WCAG_DETAIL_COLUMNS,
+    *TECHNICAL_COLUMNS,
+    *[RULE_DEFINITIONS[rule_id].title for rule_id in RULE_COLUMNS],
+}
+
+PREFERRED_COLUMN_WIDTHS = {
+    "PDF Name": 28,
+    "PDF/UA Notes": 42,
+    "WCAG Notes": 42,
+    "Remediation Notes": 42,
+    "WCAG Criteria Affected": 34,
+    "WCAG Adobe Findings": 28,
+    "WCAG Adobe Statuses": 28,
+    "WCAG Fix Directions": 42,
+    "WCAG Machine-Verifiable": 26,
+    "Original URL": 24,
+    "Final URL": 24,
+    "Page Title": 28,
+    "Failure Summary": 34,
+    "Failure Detail": 56,
+    "Remediation Guidance": 44,
+    "Manual Review Summary": 44,
+    "Notes": 44,
+}
+
+THIN_BORDER = Border(
+    left=Side(style="thin", color="FFFFFF"),
+    right=Side(style="thin", color="FFFFFF"),
+    top=Side(style="thin", color="FFFFFF"),
+    bottom=Side(style="thin", color="FFFFFF"),
+)
+
+ADOBE_WCAG_RULE_MAP = {
+    "color contrast": (
+        "WCAG 1.4.3 Contrast (Minimum)",
+        "Review the foreground/background color pairings Adobe flagged and correct any text that does not meet AA contrast ratios.",
+    ),
+    "logical reading order": (
+        "WCAG 1.3.2 Meaningful Sequence",
+        "Confirm the reading order is meaningful for assistive technology and repair the source structure or tag order where needed.",
+    ),
+    "figures alternate text": (
+        "WCAG 1.1.1 Non-text Content",
+        "Add or correct alternate text for non-decorative figures so the same purpose or meaning is available non-visually.",
+    ),
+    "field descriptions": (
+        "WCAG 3.3.2 Labels or Instructions / 4.1.2 Name, Role, Value",
+        "Add clear programmatic descriptions to form fields so users receive accurate labels and instructions.",
+    ),
+    "tagged content": (
+        "WCAG 1.3.1 Info and Relationships",
+        "Repair the tag structure so visible content is represented semantically for assistive technology.",
+    ),
+    "tagged annotations": (
+        "WCAG 4.1.2 Name, Role, Value",
+        "Ensure annotations and interactive elements are tagged so assistive technology can expose their purpose correctly.",
+    ),
+    "headers": (
+        "WCAG 1.3.1 Info and Relationships",
+        "Add proper table headers or equivalent structural markup so relationships inside tables are programmatically available.",
+    ),
+    "summary": (
+        "WCAG 1.3.1 Info and Relationships",
+        "Add a meaningful table summary or equivalent contextual description where Adobe flagged missing table summaries.",
+    ),
+    "title": (
+        "WCAG 2.4.2 Page Titled",
+        "Set a meaningful document title and ensure the viewer shows it instead of the filename.",
+    ),
+    "primary language": (
+        "WCAG 3.1.1 Language of Page",
+        "Set the document primary language in metadata so assistive technology uses the correct pronunciation rules.",
+    ),
+    "bookmarks": (
+        "WCAG 2.4.1 Bypass Blocks / 2.4.5 Multiple Ways",
+        "Add bookmarks for longer documents so users can move between sections more efficiently.",
+    ),
+    "tagged form fields": (
+        "WCAG 1.3.1 Info and Relationships / 4.1.2 Name, Role, Value",
+        "Tag all form fields so their role and relationship to the surrounding structure are available programmatically.",
+    ),
+    "tab order": (
+        "WCAG 2.4.3 Focus Order",
+        "Align tab order with the document structure so keyboard users move through the PDF in a logical order.",
+    ),
+    "character encoding": (
+        "WCAG 4.1.2 Name, Role, Value",
+        "Repair text encoding issues so assistive technology can reliably interpret the document content.",
+    ),
+}
 
 
 class WorkbookTemplateResolver:
@@ -105,8 +290,13 @@ class WorkbookTemplateResolver:
 
 
 class ReportBuilder:
-    def __init__(self, template_resolver: WorkbookTemplateResolver) -> None:
+    def __init__(
+        self,
+        template_resolver: WorkbookTemplateResolver,
+        adobe_report_store: AdobeReportStore | None = None,
+    ) -> None:
         self.template_resolver = template_resolver
+        self.adobe_report_store = adobe_report_store
 
     def build(self, rows: list[DocumentAuditRecord], summary: SummaryMetrics) -> bytes:
         workbook = self.template_resolver.create_workbook()
@@ -114,44 +304,129 @@ class ReportBuilder:
 
         if sheet.max_row > 0:
             sheet.delete_rows(1, sheet.max_row)
+        sheet.append(self._group_header_row())
         sheet.append(REPORT_COLUMNS)
+        self._style_headers(sheet)
 
-        for row_index, row in enumerate(rows, start=2):
+        for row_index, row in enumerate(rows, start=3):
             tracker_row = self._tracker_row(row, summary)
+            wcag_detail_row = self._wcag_detail_row(row)
             technical_row = self._technical_row(row)
             rule_row = [row.rule_results[rule_id].status.value for rule_id in RULE_COLUMNS]
-            sheet.append([self._clean_cell_value(value) for value in [*tracker_row, *technical_row, *rule_row]])
+            sheet.append([self._clean_cell_value(value) for value in [*tracker_row, *wcag_detail_row, *technical_row, *rule_row]])
 
-            url_cell = sheet.cell(row=row_index, column=2)
-            url_cell.value = "Open PDF"
-            url_cell.hyperlink = row.original_url
+            name_cell = sheet.cell(row=row_index, column=1)
+            name_cell.hyperlink = row.original_url
+            original_url_col = REPORT_COLUMNS.index("Original URL") + 1
+            original_url_cell = sheet.cell(row=row_index, column=original_url_col)
+            original_url_cell.hyperlink = row.original_url
+        self._format_sheet(sheet)
+        self._apply_body_alignment(sheet)
+        self._apply_status_styles(sheet)
 
         output = BytesIO()
         workbook.save(output)
         output.seek(0)
         return output.read()
 
+    @staticmethod
+    def _group_header_row() -> list[str]:
+        group_row: list[str] = []
+        for group_name, columns in HEADER_GROUPS:
+            group_row.append(group_name)
+            group_row.extend([""] * (len(columns) - 1))
+        return group_row
+
+    def _style_headers(self, sheet) -> None:  # type: ignore[no-untyped-def]
+        group_font = Font(color="FFFFFF", bold=True)
+        child_font = Font(bold=True, color="1F2937")
+        child_fill = PatternFill(fill_type="solid", fgColor="E8EEF5")
+        for start_col, (group_name, columns) in self._group_spans().items():
+            end_col = start_col + len(columns) - 1
+            sheet.merge_cells(start_row=1, start_column=start_col, end_row=1, end_column=end_col)
+            cell = sheet.cell(row=1, column=start_col)
+            cell.fill = PatternFill(fill_type="solid", fgColor=GROUP_FILLS.get(group_name, "334155"))
+            cell.font = group_font
+            cell.alignment = Alignment(horizontal="center", vertical="center")
+
+            for col in range(start_col, end_col + 1):
+                child = sheet.cell(row=2, column=col)
+                child.font = child_font
+                child.fill = child_fill
+                child.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+
+        sheet.row_dimensions[1].height = 24
+        sheet.row_dimensions[2].height = 36
+
+    def _format_sheet(self, sheet) -> None:  # type: ignore[no-untyped-def]
+        sheet.freeze_panes = "A3"
+        sheet.auto_filter.ref = f"A2:{get_column_letter(sheet.max_column)}{sheet.max_row}"
+
+        for idx, column_name in enumerate(REPORT_COLUMNS, start=1):
+            max_length = len(str(column_name))
+            for row in range(3, sheet.max_row + 1):
+                value = sheet.cell(row=row, column=idx).value
+                if value is None:
+                    continue
+                max_length = max(max_length, len(str(value)))
+            preferred_width = PREFERRED_COLUMN_WIDTHS.get(column_name)
+            width = preferred_width if preferred_width is not None else min(max(max_length + 2, 12), 42)
+            sheet.column_dimensions[get_column_letter(idx)].width = width
+
+    def _apply_status_styles(self, sheet) -> None:  # type: ignore[no-untyped-def]
+        status_columns = {
+            idx
+            for idx, name in enumerate(REPORT_COLUMNS, start=1)
+            if name in TRACKER_STATUS_COLUMNS or name in TECHNICAL_STATUS_COLUMNS or name in {
+                RULE_DEFINITIONS[rule_id].title for rule_id in RULE_COLUMNS
+            }
+        }
+
+        for row in range(3, sheet.max_row + 1):
+            for col in status_columns:
+                cell = sheet.cell(row=row, column=col)
+                value = cell.value
+                if value is None:
+                    continue
+                style = STATUS_STYLE_MAP.get(str(value))
+                if not style:
+                    continue
+                cell.fill = PatternFill(fill_type="solid", fgColor=style["fill"])
+                cell.font = Font(color=style["font"], bold=True)
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+                cell.border = THIN_BORDER
+
+    def _apply_body_alignment(self, sheet) -> None:  # type: ignore[no-untyped-def]
+        for idx, column_name in enumerate(REPORT_COLUMNS, start=1):
+            if column_name not in WRAP_TEXT_COLUMNS:
+                continue
+            for row in range(3, sheet.max_row + 1):
+                cell = sheet.cell(row=row, column=idx)
+                if cell.value is None:
+                    continue
+                cell.alignment = Alignment(horizontal="left", vertical="top", wrap_text=True)
+
+    @staticmethod
+    def _group_spans() -> dict[int, tuple[str, list[str]]]:
+        spans: dict[int, tuple[str, list[str]]] = {}
+        cursor = 1
+        for group_name, columns in HEADER_GROUPS:
+            spans[cursor] = (group_name, columns)
+            cursor += len(columns)
+        return spans
+
     def _tracker_row(self, row: DocumentAuditRecord, summary: SummaryMetrics) -> list[object]:
         return [
             self._pdf_name(row),
-            row.original_url,
-            self._category(row),
             None,
-            None,
-            self._axes_status(row),
             summary.run_timestamp.date(),
             self._tracker_bucket_value(row.grouped_results.pdf_ua_result),
             self._tracker_bucket_value(row.grouped_results.wcag_result),
-            None,
             self._pdf_ua_notes(row),
             self._wcag_notes(row),
             "Not Started",
             self._adobe_status(row),
             self._remediation_notes(row),
-            None,
-            None,
-            None,
-            None,
         ]
 
     def _technical_row(self, row: DocumentAuditRecord) -> list[object]:
@@ -173,6 +448,23 @@ class ReportBuilder:
             row.notes,
         ]
 
+    def _wcag_detail_row(self, row: DocumentAuditRecord) -> list[object]:
+        findings = self._mapped_wcag_findings(row)
+        if not findings:
+            return [None, None, None, None, None]
+        criteria = " | ".join(self._unique_in_order(item["criterion"] for item in findings))
+        adobe_findings = " | ".join(self._unique_in_order(item["rule"] for item in findings))
+        adobe_statuses = " | ".join(
+            self._unique_in_order(f'{item["rule"]}: {item["status"]}' for item in findings)
+        )
+        fix_directions = " | ".join(self._unique_in_order(item["fix"] for item in findings))
+        machine_verifiable = " | ".join(
+            self._unique_in_order(
+                f'{item["rule"]}: {"No" if item["status"] == "Needs manual check" else "Yes"}' for item in findings
+            )
+        )
+        return [criteria, adobe_findings, adobe_statuses, fix_directions, machine_verifiable]
+
     @staticmethod
     def _pdf_name(row: DocumentAuditRecord) -> str:
         if row.pdf_name:
@@ -181,34 +473,24 @@ class ReportBuilder:
         return filename.replace("-", " ").replace("_", " ").title()
 
     @staticmethod
-    def _category(row: DocumentAuditRecord) -> str | None:
-        parts = [part for part in urlparse(row.original_url).path.split("/") if part]
-        if "pdfs" in parts:
-            index = parts.index("pdfs")
-            if index + 1 < len(parts):
-                return parts[index + 1].replace("-", " ").title()
-        return None
-
-    def _axes_status(self, row: DocumentAuditRecord) -> str:
-        if row.retrieval_category != RetrievalCategory.DIRECT_FILE_OK:
-            return "Blocked"
-        if self._has_adobe_rule_failure(row, "Tagged PDF"):
-            return "Blocked"
-        return "Complete"
-
-    @staticmethod
     def _tracker_bucket_value(status: CheckStatus) -> str | None:
         if status == CheckStatus.PASS:
             return "Pass"
-        if status in {CheckStatus.FAIL, CheckStatus.NEEDS_MANUAL_REVIEW, CheckStatus.API_UNAVAILABLE}:
+        if status == CheckStatus.FAIL:
             return "Fail"
+        if status == CheckStatus.NEEDS_MANUAL_REVIEW:
+            return "Needs Review"
+        if status == CheckStatus.API_UNAVAILABLE:
+            return "Pending Adobe"
         return None
 
     def _pdf_ua_notes(self, row: DocumentAuditRecord) -> str | None:
         if row.retrieval_category != RetrievalCategory.DIRECT_FILE_OK:
+            if row.retrieval_category == RetrievalCategory.REVIEW_REQUIRED:
+                return "The linked asset is not a PDF. Route this row to the correct Office-file review path instead of PDF/UA testing."
             return "The source PDF could not be retrieved for accessibility testing."
 
-        if self._has_adobe_rule_failure(row, "Tagged PDF"):
+        if self._has_tagged_pdf_failure(row):
             return (
                 "Basic requirement for accessible PDFs not met!\n\n"
                 "The PDF does not contain an invisible structural layer in the form of tags and "
@@ -224,6 +506,7 @@ class ReportBuilder:
                 "doc_title_present",
                 "doc_language_present",
                 "at_access_not_blocked",
+                "tagged_pdf_present",
                 "figure_alt_present",
                 "bookmarks_present_if_gt_3_pages",
                 "lists_use_l",
@@ -231,7 +514,6 @@ class ReportBuilder:
                 "links_use_link_tag",
                 "form_fields_have_tu",
                 "footnotes_use_note",
-                "adobe_full_check",
             },
             exclude_adobe_manual_only=True,
         )
@@ -241,7 +523,15 @@ class ReportBuilder:
 
     def _wcag_notes(self, row: DocumentAuditRecord) -> str | None:
         if row.retrieval_category != RetrievalCategory.DIRECT_FILE_OK:
+            if row.retrieval_category == RetrievalCategory.REVIEW_REQUIRED:
+                return "The linked asset is an Office-format file rather than a PDF, so PDF WCAG results do not apply until it is converted or reviewed in the correct format."
             return "The source PDF resolved to a not-found or non-PDF destination."
+
+        if row.grouped_results.wcag_result == CheckStatus.API_UNAVAILABLE:
+            return "Adobe machine checks were unavailable for this file. Re-run the Adobe step before treating WCAG as final."
+
+        if row.grouped_results.wcag_result == CheckStatus.NEEDS_MANUAL_REVIEW:
+            return "Adobe flagged items that need human review before a final WCAG verdict is assigned."
 
         if row.grouped_results.wcag_result == CheckStatus.PASS:
             return "The file meets all machine-verifiable WCAG requirements (Level A and AA)."
@@ -274,9 +564,16 @@ class ReportBuilder:
             return "Not Started"
         return "Complete"
 
-    @staticmethod
-    def _remediation_notes(row: DocumentAuditRecord) -> str | None:
-        parts = [part for part in [row.remediation_guidance, row.manual_review_summary] if part]
+    def _remediation_notes(self, row: DocumentAuditRecord) -> str | None:
+        parts = [
+            part
+            for part in [
+                row.remediation_guidance,
+                row.manual_review_summary,
+                self._wcag_remediation_notes_from_adobe(row),
+            ]
+            if part
+        ]
         return " | ".join(parts) if parts else None
 
     @staticmethod
@@ -285,22 +582,39 @@ class ReportBuilder:
             return ILLEGAL_XLSX_CHAR_RE.sub("", value)
         return value
 
-    @staticmethod
-    def _adobe_findings(row: DocumentAuditRecord) -> list[dict]:
-        raw = row.rule_results["adobe_full_check"].raw or {}
+    def _adobe_findings(self, row: DocumentAuditRecord) -> list[dict]:
+        raw = self._adobe_raw_report(row)
         detailed = raw.get("Detailed Report")
         if not isinstance(detailed, dict):
             return []
         findings: list[dict] = []
-        for group in detailed.values():
+        for section_name, group in detailed.items():
             if isinstance(group, list):
                 for finding in group:
                     if isinstance(finding, dict):
-                        findings.append(finding)
+                        enriched = dict(finding)
+                        enriched["_section"] = section_name
+                        findings.append(enriched)
         return findings
+
+    def _adobe_raw_report(self, row: DocumentAuditRecord) -> dict:
+        raw = row.rule_results["adobe_full_check"].raw
+        if isinstance(raw, dict) and raw:
+            return raw
+        if self.adobe_report_store:
+            cached = self.adobe_report_store.load(row.original_url) or self.adobe_report_store.load(row.final_url)
+            if cached:
+                return cached
+        return {}
 
     def _has_adobe_rule_failure(self, row: DocumentAuditRecord, rule_name: str) -> bool:
         return self._has_adobe_rule_status(row, rule_name, CheckStatus.FAIL)
+
+    def _has_tagged_pdf_failure(self, row: DocumentAuditRecord) -> bool:
+        tagged_pdf_result = row.rule_results.get("tagged_pdf_present")
+        if tagged_pdf_result and tagged_pdf_result.status == CheckStatus.FAIL:
+            return True
+        return self._has_adobe_rule_failure(row, "Tagged PDF")
 
     def _has_adobe_rule_status(self, row: DocumentAuditRecord, rule_name: str, status: CheckStatus) -> bool:
         for finding in self._adobe_findings(row):
@@ -333,6 +647,54 @@ class ReportBuilder:
             detail = result.evidence[0] if result.evidence else title
             findings.append(detail if detail != title else f"{title} needs attention.")
         return findings
+
+    def _wcag_remediation_notes_from_adobe(self, row: DocumentAuditRecord) -> str | None:
+        mapped_notes: list[str] = []
+        seen: set[str] = set()
+        for finding in self._mapped_wcag_findings(row):
+            criterion = finding["criterion"]
+            note = finding["fix"]
+            rendered = f"{criterion}: {note}"
+            if rendered in seen:
+                continue
+            seen.add(rendered)
+            mapped_notes.append(rendered)
+        return " | ".join(mapped_notes) if mapped_notes else None
+
+    def _mapped_wcag_findings(self, row: DocumentAuditRecord) -> list[dict[str, str]]:
+        mapped: list[dict[str, str]] = []
+        for finding in self._adobe_findings(row):
+            status_text = str(finding.get("Status", "")).strip()
+            normalized_status = status_text.lower()
+            if normalized_status not in {"failed", "needs manual check"}:
+                continue
+            rule_name = str(finding.get("Rule", "")).strip()
+            mapping = ADOBE_WCAG_RULE_MAP.get(rule_name.lower())
+            if not mapping:
+                continue
+            criterion, fix = mapping
+            mapped.append(
+                {
+                    "criterion": criterion,
+                    "rule": rule_name,
+                    "status": status_text,
+                    "fix": fix,
+                    "section": str(finding.get("_section", "")).strip(),
+                }
+            )
+        return mapped
+
+    @staticmethod
+    def _unique_in_order(items) -> list[str]:
+        seen: set[str] = set()
+        ordered: list[str] = []
+        for item in items:
+            value = str(item).strip()
+            if not value or value in seen:
+                continue
+            seen.add(value)
+            ordered.append(value)
+        return ordered
 
 
 def compute_summary(rows: list[DocumentAuditRecord]) -> SummaryMetrics:

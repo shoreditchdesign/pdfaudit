@@ -28,6 +28,7 @@ from app.models.domain import (
     RuleResult,
 )
 from app.services.adobe import AdobeClient
+from app.services.adobe_cache import AdobeReportStore
 from app.services.downloader import Downloader
 from app.services.file_manager import FileManager
 from app.services.layer1 import Layer1Orchestrator
@@ -57,7 +58,11 @@ class JobManager:
         self.downloader = Downloader()
         self.retrieval = RetrievalInspector()
         self.layer1 = Layer1Orchestrator()
-        self.report_builder = ReportBuilder(WorkbookTemplateResolver(settings.audit_template_path))
+        self.adobe_report_store = AdobeReportStore(settings.adobe_response_cache_dir)
+        self.report_builder = ReportBuilder(
+            WorkbookTemplateResolver(settings.audit_template_path),
+            adobe_report_store=self.adobe_report_store,
+        )
         self.jobs: dict[str, JobState] = {}
 
     def health(self) -> HealthResponse:
@@ -169,7 +174,13 @@ class JobManager:
 
             rule_results.update(await asyncio.to_thread(self.layer1.run, pdf_path))
             adobe_client = AdobeClient(self.settings, enabled=state.use_adobe and self.settings.adobe_configured)
-            rule_results.update(await asyncio.to_thread(adobe_client.check_document, str(pdf_path)))
+            adobe_results = await asyncio.to_thread(adobe_client.check_document, str(pdf_path))
+            rule_results.update(adobe_results)
+            adobe_raw = adobe_results.get("adobe_full_check").raw if adobe_results.get("adobe_full_check") else None
+            if adobe_raw:
+                await asyncio.to_thread(self.adobe_report_store.save, document.url, adobe_raw)
+                if retrieval.final_url and retrieval.final_url != document.url:
+                    await asyncio.to_thread(self.adobe_report_store.save, retrieval.final_url, adobe_raw)
 
             document.stage = DocumentStage.REPORTING
             record = self._record_from_results(index, document.url, retrieval, rule_results, page_count=page_count)
@@ -211,10 +222,10 @@ class JobManager:
     ) -> DocumentAuditRecord:
         grouped_results = GroupedResults(
             pdf_ua_result=self._derive_bucket_result(PDF_UA_RULE_IDS, rule_results),
-            wcag_result=self._derive_bucket_result(WCAG_RULE_IDS, rule_results),
+            wcag_result=self._derive_wcag_bucket_result(rule_results),
             hsbc_policy_result=self._derive_bucket_result(HSBC_POLICY_RULE_IDS, rule_results),
         )
-        overall_result = self._derive_overall_result(rule_results)
+        overall_result = self._derive_overall_result(grouped_results)
 
         return DocumentAuditRecord(
             id=index,
@@ -237,11 +248,18 @@ class JobManager:
         )
 
     @staticmethod
-    def _derive_overall_result(rule_results: dict[str, RuleResult]) -> CheckStatus:
-        statuses = [result.status for result in rule_results.values() if result.status != CheckStatus.NA]
+    def _derive_overall_result(grouped_results: GroupedResults) -> CheckStatus:
+        statuses = [
+            grouped_results.pdf_ua_result,
+            grouped_results.wcag_result,
+            grouped_results.hsbc_policy_result,
+        ]
+        statuses = [status for status in statuses if status != CheckStatus.NA]
         if CheckStatus.FAIL in statuses:
             return CheckStatus.FAIL
-        if CheckStatus.NEEDS_MANUAL_REVIEW in statuses or CheckStatus.API_UNAVAILABLE in statuses:
+        if CheckStatus.NEEDS_MANUAL_REVIEW in statuses:
+            return CheckStatus.NEEDS_MANUAL_REVIEW
+        if CheckStatus.API_UNAVAILABLE in statuses:
             return CheckStatus.NEEDS_MANUAL_REVIEW
         return CheckStatus.PASS
 
@@ -255,6 +273,38 @@ class JobManager:
             return CheckStatus.FAIL
         if CheckStatus.NEEDS_MANUAL_REVIEW in statuses or CheckStatus.API_UNAVAILABLE in statuses:
             return CheckStatus.NEEDS_MANUAL_REVIEW
+        return CheckStatus.PASS
+
+    @staticmethod
+    def _derive_wcag_bucket_result(rule_results: dict[str, RuleResult]) -> CheckStatus:
+        statuses = [rule_results[rule_id].status for rule_id in WCAG_RULE_IDS if rule_id in rule_results]
+        statuses = [status for status in statuses if status != CheckStatus.NA]
+        if not statuses:
+            return CheckStatus.NA
+
+        if CheckStatus.FAIL in statuses:
+            return CheckStatus.FAIL
+
+        adobe_statuses = {
+            rule_results[rule_id].status
+            for rule_id in {"colour_contrast_machine_check", "reading_order_machine_check", "adobe_full_check"}
+            if rule_id in rule_results
+        }
+        if CheckStatus.API_UNAVAILABLE in adobe_statuses:
+            return CheckStatus.API_UNAVAILABLE
+        if CheckStatus.NEEDS_MANUAL_REVIEW in adobe_statuses:
+            return CheckStatus.NEEDS_MANUAL_REVIEW
+
+        retrieval_statuses = {
+            rule_results[rule_id].status
+            for rule_id in {"url_resolves", "url_is_expected_file", "extractable_text_present"}
+            if rule_id in rule_results
+        }
+        if CheckStatus.NEEDS_MANUAL_REVIEW in retrieval_statuses:
+            return CheckStatus.NEEDS_MANUAL_REVIEW
+        if CheckStatus.API_UNAVAILABLE in retrieval_statuses:
+            return CheckStatus.API_UNAVAILABLE
+
         return CheckStatus.PASS
 
     @staticmethod
@@ -352,7 +402,13 @@ class JobManager:
         }:
             expected_file_status = CheckStatus.NEEDS_MANUAL_REVIEW
             landing_status = CheckStatus.NEEDS_MANUAL_REVIEW
-            landing_reason = "Destination is not a direct PDF and may require business review."
+            if retrieval.retrieval_category == RetrievalCategory.REVIEW_REQUIRED:
+                landing_reason = (
+                    "Destination is a non-PDF office file and should be reviewed with the "
+                    "correct format-specific audit path."
+                )
+            else:
+                landing_reason = "Destination is not a direct PDF and may require business review."
 
         return {
             "url_resolves": RuleResult(

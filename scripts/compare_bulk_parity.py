@@ -18,26 +18,43 @@ def main(control_json_path: str, report_xlsx_path: str, output_csv_path: str) ->
     control_rows = json.loads(Path(control_json_path).read_text())
     workbook = load_workbook(Path(report_xlsx_path), data_only=True)
     worksheet = workbook["Sheet1"]
-    headers = [cell.value for cell in worksheet[1]]
+    header_row_index = 1
+    first_row = [cell.value for cell in worksheet[1]]
+    if "Original URL" not in first_row and worksheet.max_row >= 2:
+        second_row = [cell.value for cell in worksheet[2]]
+        if "Original URL" in second_row:
+            header_row_index = 2
+            headers = second_row
+        else:
+            headers = first_row
+    else:
+        headers = first_row
     header_index = {str(name): idx + 1 for idx, name in enumerate(headers) if name is not None}
 
     report_rows: dict[str, dict[str, object]] = {}
-    for row_idx in range(2, worksheet.max_row + 1):
-        original_url = worksheet.cell(row_idx, header_index["Original URL"]).value
+
+    def cell_value(row_idx: int, column_name: str) -> object:
+        col_idx = header_index.get(column_name)
+        if col_idx is None:
+            return ""
+        return worksheet.cell(row_idx, col_idx).value
+
+    for row_idx in range(header_row_index + 1, worksheet.max_row + 1):
+        original_url = cell_value(row_idx, "Original URL")
         if not original_url:
             continue
         report_rows[str(original_url)] = {
-            "pdf_name": worksheet.cell(row_idx, header_index["PDF Name"]).value,
-            "axes_status": worksheet.cell(row_idx, header_index["Axes Audit Status"]).value,
-            "pdfua": worksheet.cell(row_idx, header_index["PDF/ UA Reults"]).value,
-            "wcag": worksheet.cell(row_idx, header_index["WCAG Reults"]).value,
-            "pdfua_notes": worksheet.cell(row_idx, header_index["PDF/UA Notes"]).value,
-            "wcag_notes": worksheet.cell(row_idx, header_index["WCAG Notes"]).value,
-            "adobe_status": worksheet.cell(row_idx, header_index["Adobe Acrobat Audit Status"]).value,
-            "final_url": worksheet.cell(row_idx, header_index["Final URL"]).value,
-            "retrieval_category": worksheet.cell(row_idx, header_index["Retrieval Category"]).value,
-            "overall_result": worksheet.cell(row_idx, header_index["Overall Result"]).value,
-            "failure_summary": worksheet.cell(row_idx, header_index["Failure Summary"]).value,
+            "pdf_name": cell_value(row_idx, "PDF Name"),
+            "axes_status": cell_value(row_idx, "Axes Audit Status"),
+            "pdfua": cell_value(row_idx, "PDF/ UA Reults"),
+            "wcag": cell_value(row_idx, "WCAG Reults"),
+            "pdfua_notes": cell_value(row_idx, "PDF/UA Notes"),
+            "wcag_notes": cell_value(row_idx, "WCAG Notes"),
+            "adobe_status": cell_value(row_idx, "Adobe Acrobat Audit Status"),
+            "final_url": cell_value(row_idx, "Final URL"),
+            "retrieval_category": cell_value(row_idx, "Retrieval Category"),
+            "overall_result": cell_value(row_idx, "Overall Result"),
+            "failure_summary": cell_value(row_idx, "Failure Summary"),
         }
 
     output_path = Path(output_csv_path)

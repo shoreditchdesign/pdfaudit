@@ -8,7 +8,7 @@ from typing import Any, Iterable
 import requests
 
 from app.core.config import Settings
-from app.models.domain import CheckStatus, RuleResult
+from app.models.domain import CheckStatus, ExecutionMode, RuleResult
 from app.services.checks.base import api_unavailable_result, fail_result, manual_result, pass_result
 from app.services.rule_catalog import RULE_DEFINITIONS
 
@@ -365,16 +365,21 @@ class AdobeClient:
     @staticmethod
     def _to_rule_result(rule_id: str, result, source: str, raw_report: dict[str, Any] | None) -> RuleResult:
         definition = RULE_DEFINITIONS[rule_id]
-        confidence = 0.0 if result.status == CheckStatus.API_UNAVAILABLE else 0.8
+        status = result.status
+        manual_review_reason = result.skipped_reason
+        if status == CheckStatus.FAIL and definition.execution_mode != ExecutionMode.PYTHON_DETERMINISTIC:
+            status = CheckStatus.NEEDS_MANUAL_REVIEW
+            manual_review_reason = manual_review_reason or "This finding is not fully machine-verifiable and needs human review."
+        confidence = 0.0 if status == CheckStatus.API_UNAVAILABLE else 0.8
         return RuleResult(
             rule_id=rule_id,
             theme=definition.theme,
             execution_mode=definition.execution_mode,
-            status=result.status,
+            status=status,
             evidence=result.details,
             remediation=definition.remediation_template,
             confidence=confidence,
-            manual_review_reason=result.skipped_reason,
+            manual_review_reason=manual_review_reason,
             source=source,
             raw=raw_report,
         )

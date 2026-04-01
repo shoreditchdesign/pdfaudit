@@ -53,6 +53,13 @@ RULE_DEFINITIONS = {
         execution_mode=ExecutionMode.PYTHON_HEURISTIC,
         remediation_template="OCR and retag the source document before re-auditing.",
     ),
+    "tagged_pdf_present": RuleDefinition(
+        rule_id="tagged_pdf_present",
+        theme=RuleTheme.STRUCTURE,
+        title="Tagged PDF present",
+        execution_mode=ExecutionMode.PYTHON_DETERMINISTIC,
+        remediation_template="Export or remediate the PDF with a valid structural tag layer before further testing.",
+    ),
     "at_least_one_heading": RuleDefinition(
         rule_id="at_least_one_heading",
         theme=RuleTheme.HEADINGS,
@@ -140,6 +147,7 @@ RULE_DEFINITIONS = {
 }
 
 PDF_UA_RULE_IDS = {
+    "tagged_pdf_present",
     "doc_title_present",
     "doc_language_present",
     "at_access_not_blocked",
@@ -148,7 +156,6 @@ PDF_UA_RULE_IDS = {
     "lists_use_l",
     "tables_use_table_tag",
     "links_use_link_tag",
-    "form_fields_have_tu",
     "footnotes_use_note",
 }
 
@@ -158,7 +165,6 @@ WCAG_RULE_IDS = {
     "extractable_text_present",
     "colour_contrast_machine_check",
     "reading_order_machine_check",
-    "adobe_full_check",
 }
 
 HSBC_POLICY_RULE_IDS = {

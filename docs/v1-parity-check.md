@@ -215,3 +215,58 @@ V1 is now strong enough to run live, compare at scale, and produce meaningful pa
 The main blocker to higher parity is not plumbing anymore.
 
 It is rule severity and rollup calibration, especially for WCAG.
+
+## Follow-Up Pass - Tagged PDF And WCAG Rollup
+
+Date: `2026-04-01`
+
+After the first parity pass, two additional rollup changes were made:
+
+- `form_fields_have_tu` was removed from the `PDF_UA_RULE_IDS` rollup
+- a Python `tagged_pdf_present` rule was added so untagged files can be blocked without relying only on Adobe wording
+
+Artifacts from the follow-up Adobe-backed rerun:
+
+- workbook:
+  - `docs/artifacts/audit-parity-20260401104323.xlsx`
+- parity CSV:
+  - `docs/artifacts/bulk_parity_parity-20260401104323.csv`
+
+Top-line results for this rerun:
+
+- `Axes Audit Status` parity: `92 / 100`
+- `PDF/UA` parity: `69 / 97`
+- `WCAG` parity: `63 / 97`
+
+What improved:
+
+- `PDF/UA` parity moved from `58 / 97` to `69 / 97`
+- `WCAG` parity moved from `43 / 97` to `63 / 97`
+- `PDF/UA Pass -> Our PDF/UA Fail` direct-file mismatches dropped to `0`
+
+What still stands out:
+
+1. WCAG still has two competing mismatch families
+   - `Control Pass -> Our Fail`: `10` direct-file rows
+   - these are mostly files where Adobe exposes colour contrast as `NEEDS_MANUAL_REVIEW` and the tracker still says `Pass`
+   - `Control Fail -> Our Pass`: `11` direct-file rows
+   - these are mostly files where the tracker treats structural / readability / contrast findings as WCAG `Fail`, but our current rollup keeps them at `Pass`
+
+2. Partial rows are still not tracker-aligned
+   - `11` direct-file rows with `Partial` in the control still map to `Pass` or `Fail` in our output
+   - the current export has no `Partial` bucket, so these rows can only approximate the tracker
+
+3. Some remaining mismatches are due to live-link drift
+   - retrieval distribution on this rerun:
+     - `88` `DIRECT_FILE_OK`
+     - `6` `SOFT_404`
+     - `5` `REVIEW_REQUIRED`
+     - `1` `REQUEST_ERROR`
+
+Current read:
+
+- the PDF/UA top-line rollup is much closer now
+- the biggest remaining work is a better interpretation layer for Adobe-backed WCAG findings
+- specifically:
+  - which Adobe `FAIL` findings should really drive tracker-style WCAG fail
+  - which Adobe `NEEDS_MANUAL_REVIEW` findings should stay note-only

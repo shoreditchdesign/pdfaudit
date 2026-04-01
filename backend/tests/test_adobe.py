@@ -27,9 +27,9 @@ def test_adobe_client_maps_report_findings_into_rule_results(monkeypatch) -> Non
     monkeypatch.setattr(client, "_run_accessibility_job", lambda _: sample_report)
     results = client.check_document("/tmp/example.pdf")
 
-    assert results["colour_contrast_machine_check"].status == CheckStatus.FAIL
+    assert results["colour_contrast_machine_check"].status == CheckStatus.NEEDS_MANUAL_REVIEW
     assert results["reading_order_machine_check"].status == CheckStatus.NEEDS_MANUAL_REVIEW
-    assert results["adobe_full_check"].status == CheckStatus.FAIL
+    assert results["adobe_full_check"].status == CheckStatus.NEEDS_MANUAL_REVIEW
 
 
 def test_adobe_client_returns_api_unavailable_without_credentials() -> None:

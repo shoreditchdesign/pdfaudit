@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from app.models.domain import CheckResult, ExecutionMode, RuleResult
+from app.models.domain import CheckResult, CheckStatus, ExecutionMode, RuleResult
 from app.services.checks.rules import (
     alt_text,
     bookmarks,
@@ -15,6 +15,7 @@ from app.services.checks.rules import (
     metadata,
     scanned_pdf,
     security,
+    tagged_pdf,
     tables,
     toc,
 )
@@ -28,6 +29,7 @@ class Layer1Orchestrator:
             "doc_language_present": language.run(pdf_path),
             "at_access_not_blocked": security.run(pdf_path),
             "extractable_text_present": scanned_pdf.run(pdf_path),
+            "tagged_pdf_present": tagged_pdf.run(pdf_path),
             "at_least_one_heading": headings.run(pdf_path),
             "figure_alt_present": alt_text.run(pdf_path),
             "bookmarks_present_if_gt_3_pages": bookmarks.run(pdf_path),
@@ -43,15 +45,20 @@ class Layer1Orchestrator:
     @staticmethod
     def _to_rule_result(rule_id: str, result: CheckResult) -> RuleResult:
         definition = RULE_DEFINITIONS[rule_id]
+        status = result.status
+        manual_review_reason = result.skipped_reason
+        if status == CheckStatus.FAIL and definition.execution_mode != ExecutionMode.PYTHON_DETERMINISTIC:
+            status = CheckStatus.NEEDS_MANUAL_REVIEW
+            manual_review_reason = manual_review_reason or "This finding is not fully machine-verifiable and needs human review."
         return RuleResult(
             rule_id=rule_id,
             theme=definition.theme,
             execution_mode=definition.execution_mode,
-            status=result.status,
+            status=status,
             evidence=result.details,
             remediation=definition.remediation_template,
             confidence=1.0 if definition.execution_mode == ExecutionMode.PYTHON_DETERMINISTIC else 0.65,
-            manual_review_reason=result.skipped_reason,
+            manual_review_reason=manual_review_reason,
             source="python",
             raw=result.raw,
         )

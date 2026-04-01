@@ -72,6 +72,11 @@ def get_viewer_preferences(reader: PdfReader) -> DictionaryObject | None:
     return as_dict(catalog.get("/ViewerPreferences"))
 
 
+def get_mark_info(reader: PdfReader) -> DictionaryObject | None:
+    catalog = get_catalog(reader)
+    return as_dict(catalog.get("/MarkInfo"))
+
+
 def get_language(reader: PdfReader) -> str:
     catalog = get_catalog(reader)
     return as_text(catalog.get("/Lang"))
@@ -184,6 +189,18 @@ def get_user_access_summary(reader: PdfReader) -> tuple[bool, str]:
 def get_structure_root(reader: PdfReader) -> DictionaryObject | None:
     catalog = get_catalog(reader)
     return as_dict(catalog.get("/StructTreeRoot"))
+
+
+def has_tagged_pdf_structure(reader: PdfReader) -> tuple[bool, str]:
+    struct_root = get_structure_root(reader)
+    if struct_root:
+        return True, "PDF catalog contains a /StructTreeRoot."
+
+    mark_info = get_mark_info(reader)
+    if mark_info and bool(resolve_pdf_object(mark_info.get("/Marked"))):
+        return True, "PDF catalog sets /MarkInfo /Marked to true."
+
+    return False, "PDF does not expose /StructTreeRoot or /MarkInfo /Marked metadata."
 
 
 def _walk_structure_node(node: Any, sink: list[StructureElement]) -> None:

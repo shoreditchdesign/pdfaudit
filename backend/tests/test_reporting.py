@@ -9,6 +9,7 @@ from app.models.domain import (
     RetrievalCategory,
     RuleResult,
 )
+from app.services.adobe_cache import AdobeReportStore
 from app.services.reporting import REPORT_COLUMNS, ReportBuilder, WorkbookTemplateResolver, compute_summary
 from app.services.rule_catalog import RULE_DEFINITIONS
 
@@ -72,11 +73,109 @@ def test_report_builder_returns_workbook_bytes() -> None:
     workbook = load_workbook(BytesIO(report))
     sheet = workbook["Sheet1"]
     assert workbook.sheetnames == ["Sheet1"]
-    assert sheet.max_row == 2
-    assert sheet["A1"].value == "PDF Name"
-    assert sheet["B2"].value == "Open PDF"
-    assert sheet["B2"].hyperlink.target == "https://example.com/test.pdf"
-    assert sheet["F2"].value == "Complete"
-    assert sheet["H2"].value == "Pass"
-    assert sheet["I2"].value == "Pass"
-    assert REPORT_COLUMNS[19] == "Original URL"
+    assert sheet.max_row == 3
+    assert sheet["A1"].value == "Tracker Summary"
+    assert sheet["A2"].value == "PDF Name"
+    assert sheet["A3"].hyperlink.target == "https://example.com/test.pdf"
+    assert sheet["B3"].value is None
+    assert sheet["D3"].value == "Pass"
+    assert sheet["E3"].value == "Pass"
+    assert sheet.freeze_panes == "A3"
+    assert any(str(range_ref).startswith("A1:") for range_ref in sheet.merged_cells.ranges)
+    assert REPORT_COLUMNS[15] == "Original URL"
+
+
+def test_report_builder_renders_review_and_pending_labels() -> None:
+    manual_row = _record(CheckStatus.PASS)
+    manual_row.grouped_results.wcag_result = CheckStatus.NEEDS_MANUAL_REVIEW
+    manual_row.rule_results["colour_contrast_machine_check"] = _rule_result(
+        "colour_contrast_machine_check", CheckStatus.NEEDS_MANUAL_REVIEW
+    )
+    manual_row.rule_results["reading_order_machine_check"] = _rule_result(
+        "reading_order_machine_check", CheckStatus.NEEDS_MANUAL_REVIEW
+    )
+    manual_row.rule_results["adobe_full_check"] = _rule_result("adobe_full_check", CheckStatus.NEEDS_MANUAL_REVIEW)
+
+    pending_row = _record(CheckStatus.PASS)
+    pending_row.id = 2
+    pending_row.original_url = "https://example.com/pending.pdf"
+    pending_row.final_url = "https://example.com/pending.pdf"
+    pending_row.grouped_results.wcag_result = CheckStatus.API_UNAVAILABLE
+    pending_row.rule_results["colour_contrast_machine_check"] = _rule_result(
+        "colour_contrast_machine_check", CheckStatus.API_UNAVAILABLE
+    )
+    pending_row.rule_results["reading_order_machine_check"] = _rule_result(
+        "reading_order_machine_check", CheckStatus.API_UNAVAILABLE
+    )
+    pending_row.rule_results["adobe_full_check"] = _rule_result("adobe_full_check", CheckStatus.API_UNAVAILABLE)
+
+    summary = compute_summary([manual_row, pending_row])
+    builder = ReportBuilder(WorkbookTemplateResolver(template_path=None))
+    report = builder.build([manual_row, pending_row], summary)
+
+    workbook = load_workbook(BytesIO(report))
+    sheet = workbook["Sheet1"]
+    headers = [cell.value for cell in sheet[2]]
+    header_index = {str(name): idx + 1 for idx, name in enumerate(headers) if name is not None}
+    assert sheet.cell(3, header_index["WCAG Reults"]).value == "Needs Review"
+    assert "human review" in sheet.cell(3, header_index["WCAG Notes"]).value
+    assert sheet.cell(4, header_index["WCAG Reults"]).value == "Pending Adobe"
+    assert "Re-run the Adobe step" in sheet.cell(4, header_index["WCAG Notes"]).value
+
+
+def test_report_builder_maps_adobe_findings_into_wcag_remediation_notes() -> None:
+    row = _record(CheckStatus.PASS)
+    row.grouped_results.wcag_result = CheckStatus.NEEDS_MANUAL_REVIEW
+    row.rule_results["adobe_full_check"] = _rule_result("adobe_full_check", CheckStatus.NEEDS_MANUAL_REVIEW)
+    row.rule_results["adobe_full_check"].raw = {
+        "Detailed Report": {
+            "Document": [
+                {"Rule": "Color contrast", "Status": "Needs manual check"},
+                {"Rule": "Logical Reading Order", "Status": "Needs manual check"},
+                {"Rule": "Title", "Status": "Failed"},
+            ]
+        }
+    }
+
+    summary = compute_summary([row])
+    builder = ReportBuilder(WorkbookTemplateResolver(template_path=None))
+    report = builder.build([row], summary)
+
+    workbook = load_workbook(BytesIO(report))
+    sheet = workbook["Sheet1"]
+    headers = [cell.value for cell in sheet[2]]
+    header_index = {str(name): idx + 1 for idx, name in enumerate(headers) if name is not None}
+    remediation_notes = sheet.cell(3, header_index["Remediation Notes"]).value
+    assert "WCAG 1.4.3 Contrast (Minimum)" in remediation_notes
+    assert "WCAG 1.3.2 Meaningful Sequence" in remediation_notes
+    assert "WCAG 2.4.2 Page Titled" in remediation_notes
+    assert sheet.cell(3, header_index["WCAG Criteria Affected"]).value
+    assert "Color contrast" in sheet.cell(3, header_index["WCAG Adobe Findings"]).value
+
+
+def test_report_builder_loads_cached_adobe_findings_for_wcag_columns(tmp_path) -> None:
+    row = _record(CheckStatus.PASS)
+    row.rule_results["adobe_full_check"].raw = None
+    store = AdobeReportStore(tmp_path)
+    store.save(
+        row.original_url,
+        {
+            "Detailed Report": {
+                "Document": [
+                    {"Rule": "Color contrast", "Status": "Needs manual check"},
+                    {"Rule": "Title", "Status": "Failed"},
+                ]
+            }
+        },
+    )
+
+    summary = compute_summary([row])
+    builder = ReportBuilder(WorkbookTemplateResolver(template_path=None), adobe_report_store=store)
+    report = builder.build([row], summary)
+
+    workbook = load_workbook(BytesIO(report))
+    sheet = workbook["Sheet1"]
+    headers = [cell.value for cell in sheet[2]]
+    header_index = {str(name): idx + 1 for idx, name in enumerate(headers) if name is not None}
+    assert "WCAG 1.4.3 Contrast (Minimum)" in sheet.cell(3, header_index["WCAG Criteria Affected"]).value
+    assert "Color contrast" in sheet.cell(3, header_index["WCAG Adobe Findings"]).value

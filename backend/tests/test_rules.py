@@ -7,11 +7,11 @@ from pypdf.constants import UserAccessPermissions
 from pypdf.generic import BooleanObject, DictionaryObject, NameObject, TextStringObject
 
 from app.models.domain import CheckStatus
-from app.services.checks.rules import bookmarks, language, metadata, security
+from app.services.checks.rules import bookmarks, language, metadata, security, tagged_pdf
 
 
 def _write_pdf(path: Path, *, title: str | None = None, lang: str | None = None, display_doc_title: bool = False,
-               add_bookmark: bool = False, encrypt_without_extract: bool = False) -> Path:
+               add_bookmark: bool = False, encrypt_without_extract: bool = False, marked: bool = False) -> Path:
     writer = PdfWriter()
     writer.add_blank_page(width=300, height=300)
     writer.add_blank_page(width=300, height=300)
@@ -27,6 +27,11 @@ def _write_pdf(path: Path, *, title: str | None = None, lang: str | None = None,
     if display_doc_title:
         writer.root_object[NameObject("/ViewerPreferences")] = DictionaryObject(
             {NameObject("/DisplayDocTitle"): BooleanObject(True)}
+        )
+
+    if marked:
+        writer.root_object[NameObject("/MarkInfo")] = DictionaryObject(
+            {NameObject("/Marked"): BooleanObject(True)}
         )
 
     if add_bookmark:
@@ -74,3 +79,21 @@ def test_security_rule_fails_when_extraction_permissions_are_blocked(tmp_path: P
     )
     result = security.run(pdf_path)
     assert result.status == CheckStatus.FAIL
+
+
+def test_tagged_pdf_rule_fails_when_structure_markers_are_missing(tmp_path: Path) -> None:
+    pdf_path = _write_pdf(tmp_path / "tagged-fail.pdf", title="Test PDF", display_doc_title=True, lang="en-GB")
+    result = tagged_pdf.run(pdf_path)
+    assert result.status == CheckStatus.FAIL
+
+
+def test_tagged_pdf_rule_passes_when_mark_info_is_present(tmp_path: Path) -> None:
+    pdf_path = _write_pdf(
+        tmp_path / "tagged-pass.pdf",
+        title="Test PDF",
+        display_doc_title=True,
+        lang="en-GB",
+        marked=True,
+    )
+    result = tagged_pdf.run(pdf_path)
+    assert result.status == CheckStatus.PASS

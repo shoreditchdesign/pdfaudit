@@ -95,6 +95,9 @@ class RetrievalInspector:
             RetrievalCategory.SOFT_404: "Destination appears to be a soft 404 or not-found landing page.",
             RetrievalCategory.ALT_LANDING_PAGE_NON_PDF: "URL resolved to an HTML landing page instead of a PDF.",
             RetrievalCategory.REQUEST_ERROR: "Request failed before a valid response was returned.",
-            RetrievalCategory.REVIEW_REQUIRED: "Destination could not be confidently classified.",
+            RetrievalCategory.REVIEW_REQUIRED: (
+                "Destination resolved to a non-PDF office file and should be handled by a "
+                "format-specific review path."
+            ),
         }
         return messages[category]

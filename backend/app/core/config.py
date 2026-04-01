@@ -32,6 +32,10 @@ class Settings(BaseSettings):
     audit_max_batch_size: int = Field(default=100, alias="AUDIT_MAX_BATCH_SIZE")
     audit_max_concurrency: int = Field(default=5, alias="AUDIT_MAX_CONCURRENCY")
     audit_temp_dir: Path = Field(default=Path("/tmp/hsbc_audit"), alias="AUDIT_TEMP_DIR")
+    adobe_response_cache_dir: Path = Field(
+        default=_ROOT_DIR / "docs" / "artifacts" / "adobe_cache",
+        alias="ADOBE_RESPONSE_CACHE_DIR",
+    )
 
     @property
     def adobe_configured(self) -> bool:
