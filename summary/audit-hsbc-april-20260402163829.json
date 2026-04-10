@@ -1,0 +1,22 @@
+{
+  "job_id": "05073b338471461a9d019672fcf4a6ec",
+  "timestamp": "20260402163829",
+  "theme": "hsbc-april",
+  "report_path": "reports/audit-hsbc-april-20260402163829.xlsx",
+  "source_count": 1,
+  "summary": {
+    "records": 1,
+    "pdf_ua": {
+      "PASS": 1
+    },
+    "wcag": {
+      "NEEDS_MANUAL_REVIEW": 1
+    },
+    "retrieval": {
+      "DIRECT_FILE_OK": 1
+    },
+    "adobe": {
+      "Complete": 1
+    }
+  }
+}
